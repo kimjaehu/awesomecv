@@ -15,6 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Users from './Users';
+import Map from './Map';
 import Button from '@material-ui/core/Button';
 
 
@@ -157,6 +158,7 @@ class PersistentDrawerLeft extends React.Component {
 						<Switch>
 									<Route exact path="/" component={Home} />
 									<Route path="/users" component={Users} />
+									<Route path="/map" component={Map} />
 						</Switch>
 					</main>
         </main>
