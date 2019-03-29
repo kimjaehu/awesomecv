@@ -1,4 +1,4 @@
-class Career < ApplicationRecord
+class Carrer < ApplicationRecord
   belongs_to :user
   belongs_to :profile
 end

@@ -1,6 +1,6 @@
-class CreateCareers < ActiveRecord::Migration[5.2]
+class CreateCarrers < ActiveRecord::Migration[5.2]
   def change
-    create_table :careers do |t|
+    create_table :carrers do |t|
       t.string :job_category
       t.string :job_title
       t.string :seniority
