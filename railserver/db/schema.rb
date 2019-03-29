@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_163025) do
+ActiveRecord::Schema.define(version: 2019_03_29_210854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "about_mes", force: :cascade do |t|
+    t.string "description"
+    t.bigint "user_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_about_mes_on_profile_id"
+    t.index ["user_id"], name: "index_about_mes_on_user_id"
+  end
+
+  create_table "careers", force: :cascade do |t|
+    t.string "job_category"
+    t.string "job_title"
+    t.string "seniority"
+    t.string "month_experience"
+    t.string "description"
+    t.bigint "user_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_careers_on_profile_id"
+    t.index ["user_id"], name: "index_careers_on_user_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "school_name"
+    t.string "degree"
+    t.string "start_date"
+    t.string "end_date"
+    t.string "notes"
+    t.bigint "user_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+    t.index ["user_id"], name: "index_educations_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
@@ -21,7 +59,8 @@ ActiveRecord::Schema.define(version: 2019_03_29_163025) do
     t.string "phone_number"
     t.string "postal_code"
     t.string "street_address"
-    t.string "region"
+    t.string "city"
+    t.string "state"
     t.string "country"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -37,5 +76,11 @@ ActiveRecord::Schema.define(version: 2019_03_29_163025) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "about_mes", "profiles"
+  add_foreign_key "about_mes", "users"
+  add_foreign_key "careers", "profiles"
+  add_foreign_key "careers", "users"
+  add_foreign_key "educations", "profiles"
+  add_foreign_key "educations", "users"
   add_foreign_key "profiles", "users"
 end

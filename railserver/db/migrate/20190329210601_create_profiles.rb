@@ -6,7 +6,8 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.string :postal_code
       t.string :street_address
-      t.string :region
+      t.string :city
+      t.string :state
       t.string :country
       t.references :user, foreign_key: true
 
