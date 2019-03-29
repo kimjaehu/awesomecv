@@ -29,13 +29,6 @@ const styles = theme => ({
 
 
 class BasicInfo extends Component {
-  state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    Address: '',
-  };
 
   render() {
 
@@ -50,6 +43,8 @@ class BasicInfo extends Component {
         <TextField
             id="filled-full-width"
             label="First Name"
+            value={this.props.info.firstName}
+            onChange={this.props.handler('firstName')}
             className={classes.textField}
             placeholder="First Name"
             helperText="firstName"
@@ -60,10 +55,13 @@ class BasicInfo extends Component {
               shrink: true,
             }}
         />
-        
+
+    
         <TextField
             id="filled-full-width"
             label="Last Name"
+            value={this.props.info.lastName}
+            onChange={this.props.handler('lastName')}
             className={classes.textField}
             placeholder="Last Name"
             helperText="lastName"
@@ -78,6 +76,8 @@ class BasicInfo extends Component {
         <TextField
             id="filled-full-width"
             label="email"
+            value={this.props.info.email}
+            onChange={this.props.handler('email')}
             className={classes.textField}
             placeholder="email"
             helperText="email"
@@ -91,6 +91,8 @@ class BasicInfo extends Component {
         <TextField
             id="filled-full-width"
             label="Phone Number"
+            value={this.props.info.phoneNumber}
+            onChange={this.props.handler('phoneNumber')}
             className={classes.textField}
             placeholder="Phone Number"
             helperText="phoneNumber"
@@ -103,18 +105,20 @@ class BasicInfo extends Component {
         />
         </div>
         <div>
-            <TextField
-              id="filled-full-width"
-              label="Address"
-              className={classes.address}
-              placeholder="Address"
-              helperText="address"
-              fullWidth
-              margin="normal"
-              variant="filled"
-              InputLabelProps={{
-                shrink: true,
-              }}
+          <TextField
+            id="filled-full-width"
+            label="Address"
+            value={this.props.info.address}
+            onChange={this.props.handler('address')}
+            className={classes.address}
+            placeholder="Address"
+            helperText="address"
+            fullWidth
+            margin="normal"
+            variant="filled"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
         </div>
       </div>

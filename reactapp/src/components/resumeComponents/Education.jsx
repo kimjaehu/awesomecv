@@ -75,19 +75,6 @@ const handleClick = (event) => {
 
 
 class Education extends Component {
-  state = {
-    education: '',
-    educationProperty: {
-      schoolName: '',
-      schoolFrom: '',
-      schoolTo: '',
-      degree: '',
-    }
-  };
-
-  handleChange = education => event => {
-    this.setState({ [education]: event.target.value });
-  };
 
   render() {
 
@@ -106,8 +93,6 @@ class Education extends Component {
             select
             label="Select"
             className={classes.textField}
-            value={this.state.education}
-            onChange={this.handleChange('education')}
             SelectProps={{
               MenuProps: {
                 className: classes.menu,

@@ -73,7 +73,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: -drawerWidth + drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -139,7 +139,7 @@ class PersistentDrawerLeft extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <Button color="primary" className={classes.button} href="/Users"> 
+          <Button color="primary" className={classes.button} href="/users"> 
 						Build a resume
 					</Button>
           <Divider />

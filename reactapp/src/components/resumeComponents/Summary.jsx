@@ -23,9 +23,6 @@ const styles = theme => ({
 
 
 class Summary extends Component {
-  state = {
-    Summary: '',
-  };
 
   render() {
 
@@ -40,6 +37,8 @@ class Summary extends Component {
         <TextField
             id="summary"
             label="Summary"
+            value={this.props.sum.summary}
+            onChange={this.props.handler('summary')}
             className={classes.textField}
             placeholder="Tell us about yourself"
             helperText="summary"
