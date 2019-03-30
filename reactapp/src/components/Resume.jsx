@@ -20,14 +20,20 @@ class Resume extends Component {
                                 summary:'',
                                 }, 
                     education:  {
-                                highEducation: '',
-                                schoolName: '',
-                                schoolFrom: '',
-                                schoolTo: '',
-                                degree: '',
+                                count: 1,
+                                values:  {
+                                        }
                                 }
                   }
   }
+
+  // id= 'sadasd'
+  // key: 1,
+  // highEducation: '',
+  // schoolName: '',
+  // schoolFrom: '',
+  // schoolTo: '',
+  // degree: '',
 
   testStuff() {
     console.log("top state", this.state)
@@ -49,11 +55,20 @@ class Resume extends Component {
       this.setState({summary: summary})
     }
   }
+  
+  educationHandler = (field) => {
+    return (event) => {
+      let education = this.state.education;
+      education[field] = event.target.value;
+      this.setState({education: education})
+    }
+  }
 
   onClickHandler = (event) => {
     event.preventDefault();
+    console.log(this.state.education)
     console.log(this.state)
-    axios.post('/users', this.state)
+    axios.post('http://localhost:3000/users', this.state)
     .then(response => {
       console.log(response)
     })
@@ -65,8 +80,9 @@ class Resume extends Component {
       <div>
         <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
         <Summary sum={this.state.summary} handler={this.summaryHandler}/>
-        <EducationList />
-        
+        <EducationList education={this.state.education} handler={this.educationHandler} />
+
+
         <button onClick={this.onClickHandler}>Test</button>
       </div>
     );

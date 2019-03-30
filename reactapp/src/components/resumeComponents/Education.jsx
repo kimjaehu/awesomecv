@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+
 import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
   container: {
@@ -40,32 +39,32 @@ const styles = theme => ({
   },
 });
 
-const education = [
-  {
-    value: '',
-    label: '',
-  },
-  {
-    value: 'phd',
-    label: 'PhD',
-  },
-  {
-    value: 'master',
-    label: 'Master',
-  },
-  {
-    value: 'university',
-    label: 'University',
-  },
-  {
-    value: 'college',
-    label: 'College',
-  },
-  {
-    value: '< highschool',
-    label: '< Highschool',
-  },
-];
+// const education = [
+//   {
+//     value: '',
+//     label: '',
+//   },
+//   {
+//     value: 'phd',
+//     label: 'PhD',
+//   },
+//   {
+//     value: 'master',
+//     label: 'Master',
+//   },
+//   {
+//     value: 'university',
+//     label: 'University',
+//   },
+//   {
+//     value: 'college',
+//     label: 'College',
+//   },
+//   {
+//     value: '< highschool',
+//     label: '< Highschool',
+//   },
+// ];
 
 
 const handleClick = (event) => {
@@ -73,46 +72,31 @@ const handleClick = (event) => {
 }
 
 
-
 class Education extends Component {
+  state = {
+    schoolName: ''
+  }
+
+  handleSchoolName = (e) => {
+    this.setState({ schoolName: e.target.value}, () => {
+      this.props.educationVal.schoolName = this.state.schoolName
+    })
+
+  }
 
   render() {
-
     const { classes } = this.props;
-
+    console.log(this.props.educationVal.id)
     return (
-      <div className={classes.container}>
+      <div className={classes.container} id={ this.props.educationVal.id }>
         <article>
-          <h2 className={classes.header}>Education</h2>
+          <h4 className={classes.header}>Education { this.props.educationVal.id + 1 }</h4>
         </article>
 
         <div>
-          
-          <TextField
-            id="filled-select-education"
-            select
-            label="Select"
-            className={classes.textField}
-            SelectProps={{
-              MenuProps: {
-                className: classes.menu,
-              },
-            }}
-            helperText="Highest Education"
-            margin="normal"
-            variant="filled"
-          >
-            {education.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-
-        </div>
-
-        <div>
         <TextField
+            onChange={ this.handleSchoolName }
+            value={this.state.schoolName}
             id="filled-full-width"
             label="School Name"
             className={classes.textField}
@@ -128,6 +112,7 @@ class Education extends Component {
 
         <TextField
             id="filled-full-width"
+            onChange={this.handleSchoolName}
             label="Degree"
             className={classes.textField}
             placeholder="Degree"
@@ -169,9 +154,7 @@ class Education extends Component {
         />
         
         </div>
-        <Button variant="outlined" color="primary" className={classes.button } onClick={handleClick}>
-          Add an Education
-        </Button>
+
       </div>
     );
   }
