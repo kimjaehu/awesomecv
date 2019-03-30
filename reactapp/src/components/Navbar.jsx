@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Users from './Users';
 import Map from './Map';
@@ -73,7 +73,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: -drawerWidth + drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -139,7 +139,7 @@ class PersistentDrawerLeft extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <Button color="primary" className={classes.button} href="/Users"> 
+          <Button color="primary" className={classes.button} href="/users"> 
 						Build a resume
 					</Button>
           <Divider />

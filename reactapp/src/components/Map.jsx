@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
+
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,7 @@ class Map extends Component {
     if (!window.google) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
-      s.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
+      s.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&callback=initMap`;
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
       // Below is important. 
