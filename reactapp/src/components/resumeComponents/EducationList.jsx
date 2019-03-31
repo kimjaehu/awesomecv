@@ -45,7 +45,6 @@ class EducationList extends Component {
     super(props);
     this.props.education[i] = {
       id:i,
-      highEducation: '',
       schoolName: '',
       schoolFrom: '',
       schoolTo: '',
@@ -56,7 +55,7 @@ class EducationList extends Component {
       form: [<Education key={i} educationVal={this.props.education[i]} />]
     }  
   }
-NPM
+
   educationAddHandler = () => {
 
   }
@@ -66,25 +65,24 @@ NPM
     i++;
     this.props.education[i] = {
       id:i,
-      highEducation: '',
       schoolName: '',
       schoolFrom: '',
       schoolTo: '',
       degree: ''
     }
-    rr.push(<Education key={i} education={this.props.education} educationVal={this.props.education[i]}/>)
+    rr.push(<Education key={i} education={this.props.education} educationVal={this.props.education[i]} educationElm={this.state.form}/>)
 
     this.setState({ form: rr} )
-    for ( let i of this.state.form) {
-      console.log(i)
-    }
   }
 
+  // deleteEducation = (index, event) => {
+  //   const education = Object.assign([], this.state.forms)
+  //   education.splice(index, 1)
+  //   this.setState({education:education})
+  // }
 
   render() {
     const { classes } = this.props;
-    console.log(this.props.education)
-    // this.setState({ form: this.state.form.push(<Education education={this.props.education} />)})
     return (
       <div>
         <h2> Education </h2>

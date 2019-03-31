@@ -46,7 +46,6 @@ class BasicInfo extends Component {
             onChange={this.props.handler('firstName')}
             className={classes.textField}
             placeholder="First Name"
-            helperText="firstName"
             fullWidth
             margin="normal"
             variant="filled"
@@ -63,7 +62,6 @@ class BasicInfo extends Component {
             onChange={this.props.handler('lastName')}
             className={classes.textField}
             placeholder="Last Name"
-            helperText="lastName"
             fullWidth
             margin="normal"
             variant="filled"
@@ -79,7 +77,6 @@ class BasicInfo extends Component {
             onChange={this.props.handler('email')}
             className={classes.textField}
             placeholder="email"
-            helperText="email"
             fullWidth
             margin="normal"
             variant="filled"
@@ -94,7 +91,6 @@ class BasicInfo extends Component {
             onChange={this.props.handler('phoneNumber')}
             className={classes.textField}
             placeholder="Phone Number"
-            helperText="phoneNumber"
             fullWidth
             margin="normal"
             variant="filled"
@@ -111,7 +107,6 @@ class BasicInfo extends Component {
             onChange={this.props.handler('address')}
             className={classes.address}
             placeholder="Address"
-            helperText="address"
             fullWidth
             margin="normal"
             variant="filled"

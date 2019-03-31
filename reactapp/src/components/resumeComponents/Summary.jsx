@@ -12,6 +12,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
+    width: 800,
   },
   header: {
     marginLeft: theme.spacing.unit,
@@ -40,7 +41,6 @@ class Summary extends Component {
             onChange={this.props.handler('summary')}
             className={classes.textField}
             placeholder="Tell us about yourself"
-            helperText="summary"
             fullWidth
             multiline
             rows="3"

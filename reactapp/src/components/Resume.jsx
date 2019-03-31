@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import BasicInfo from './resumeComponents/BasicInfo';
 import Summary from './resumeComponents/Summary';
 import EducationList from './resumeComponents/EducationList';
+import EmploymentList from './resumeComponents/EmploymentList';
+import ProjectList from './resumeComponents/ProjectList';
+import VolunteeringList from './resumeComponents/VolunteeringList';
 import axios from 'axios';
 
 class Resume extends Component {
@@ -23,22 +26,24 @@ class Resume extends Component {
                                 count: 1,
                                 values:  {
                                         }
+                                },
+                  employment:  {
+                                count: 1,
+                                values:  {
                                 }
+                                  },
+                      project:  {
+                                count: 1,
+                                values:  {
+                                        }
+                                },
+                  volunteering:  {
+                                count: 1,
+                                values:  {
+                                }
+                    }
                   }
   }
-
-  // id= 'sadasd'
-  // key: 1,
-  // highEducation: '',
-  // schoolName: '',
-  // schoolFrom: '',
-  // schoolTo: '',
-  // degree: '',
-
-  testStuff() {
-    console.log("top state", this.state)
-  }
-
 
   basicHandler = (field) => {
     return (event) => {
@@ -64,15 +69,38 @@ class Resume extends Component {
     }
   }
 
+  employmentHandler = (field) => {
+    return (event) => {
+      let employment = this.state.employment;
+      employment[field] = event.target.value;
+      this.setState({employment: employment})
+    }
+  }
+
+  projectHandler = (field) => {
+    return (event) => {
+      let project = this.state.project;
+      project[field] = event.target.value;
+      this.setState({project: project})
+    }
+  }
+
+  volunteeringHandler = (field) => {
+    return (event) => {
+      let volunteering = this.state.volunteering;
+      volunteering[field] = event.target.value;
+      this.setState({volunteering: volunteering})
+    }
+  }
+
   onClickHandler = (event) => {
     event.preventDefault();
-    console.log(this.state.education)
     console.log(this.state)
-    axios.post('http://localhost:3000/users', this.state)
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => console.log(error))
+    // axios.post('http://localhost:3000/users', this.state)
+    // .then(response => {
+    //   console.log(response)
+    // })
+    // .catch(error => console.log(error))
   }
 
   render() {
@@ -81,9 +109,11 @@ class Resume extends Component {
         <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
         <Summary sum={this.state.summary} handler={this.summaryHandler}/>
         <EducationList education={this.state.education} handler={this.educationHandler} />
-
-
-        <button onClick={this.onClickHandler}>Test</button>
+        <EmploymentList employment={this.state.employment} handler={this.employmentHandler} />
+        <ProjectList project={this.state.project} handler={this.projectHandler} />
+        <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} />
+        
+        <button onClick={this.onClickHandler}>Submit</button>
       </div>
     );
   }

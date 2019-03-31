@@ -21,6 +21,11 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     width: 100,
   },
+  description: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 800,
+  },
   header: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -38,39 +43,38 @@ const styles = theme => ({
   },
 });
 
-class Education extends Component {
+class Project extends Component {
   state = {
-    schoolName: '',
-    degree: '',
-    schoolFrom: '',
-    SchoolTo: ''
+    projectName: '',
+    projectDescription: '',
+    projectLink:''
   }
 
-  educationValueHandler = (field) => {
+  projectValueHandler = (field) => {
     return (event) => {
-      let educationValue = this.state;
-      educationValue[field] = event.target.value;
-      this.setState({educationValue: educationValue})
-      this.props.educationVal[field] = this.state[field]
+      let projectValue = this.state;
+      projectValue[field] = event.target.value;
+      this.setState({projectValue: projectValue})
+      this.props.projectVal[field] = this.state[field]
     }
   }
 
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.container} id={ this.props.educationVal.id }>
+      <div className={classes.container} id={ this.props.projectVal.id }>
         <article>
-          <h4 className={classes.header}>Education { this.props.educationVal.id + 1 }</h4>
+          <h4 className={classes.header}> Project { this.props.projectVal.id + 1 }</h4>
         </article>
 
         <div>
         <TextField
-            onChange={ this.educationValueHandler('schoolName') }
-            value={this.state.schoolName}
+            onChange={ this.projectValueHandler('projectName') }
+            value={this.state.projectName}
             id="filled-full-width"
-            label="School Name"
+            label="Project Name"
             className={classes.textField}
-            placeholder="School Name"
+            placeholder="Project Name"
             fullWidth
             margin="normal"
             variant="filled"
@@ -80,12 +84,27 @@ class Education extends Component {
         />
 
         <TextField
-            onChange={ this.educationValueHandler('degree') }
-            value={this.state.degree}
+            onChange={ this.projectValueHandler('projectDescription') }
+            value={this.state.projectDescription}
             id="filled-full-width"
-            label="Degree"
+            label="Description"
             className={classes.textField}
-            placeholder="Degree"
+            placeholder="Description"
+            fullWidth
+            margin="normal"
+            variant="filled"
+            InputLabelProps={{
+              shrink: true,
+            }}
+        />
+
+        <TextField
+            onChange={ this.projectValueHandler('projectLink') }
+            value={this.state.projectLink}
+            id="filled-full-width"
+            label="Link to project"
+            className={classes.textField}
+            placeholder="Link to project"
             fullWidth
             margin="normal"
             variant="filled"
@@ -94,35 +113,6 @@ class Education extends Component {
             }}
         />  
 
-        <TextField
-            onChange={ this.educationValueHandler('schoolFrom') }
-            value={this.state.schoolFrom}
-            id="filled-full-width"
-            label="From"
-            className={classes.fromTo}
-            placeholder="yyyy"
-            fullWidth
-            margin="normal"
-            variant="filled"
-            InputLabelProps={{
-              shrink: true,
-            }}
-        />
-
-<TextField
-            onChange={ this.educationValueHandler('schoolTo') }
-            value={this.state.schoolTo}
-            id="filled-full-width"
-            label="From"
-            className={classes.fromTo}
-            placeholder="yyyy"
-            fullWidth
-            margin="normal"
-            variant="filled"
-            InputLabelProps={{
-              shrink: true,
-            }}
-        />
         <Button variant="contained" color="secondary" className={classes.button} >
           <DeleteIcon className={classes.rightIcon} />
         </Button>
@@ -132,8 +122,8 @@ class Education extends Component {
     );
   }
 }
-Education.propTypes = {
+Project.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Education);
+export default withStyles(styles)(Project);

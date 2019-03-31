@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Employment from './Employment'
+import Volunteering from './Volunteering'
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -39,42 +39,40 @@ const styles = theme => ({
   },
 });
 
-class EmploymentList extends Component {
+class VolunteeringList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.employment[i] = {
+    this.props.volunteering[i] = {
       id:i,
-      companyName: '',
-      companyTitle: '',
-      companyLocation:'',
-      companyFrom: '',
-      companyTo: '',
-      description:''
+      volunteeringName: '',
+      volunteeringTitle: '',
+      volunteeringLocation:'',
+      volunteeringFrom: '',
+      volunteeringTo: ''
     }
     this.state = {
-      employment:1,
-      form: [<Employment key={i} employmentVal={this.props.employment[i]} />]
+      volunteering:1,
+      form: [<Volunteering key={i} volunteeringVal={this.props.volunteering[i]} />]
     }  
   }
 
-  employmentAddHandler = () => {
+  VolunteeringAddHandler = () => {
 
   }
 
-  addEmployment = () => {
+  addVolunteering = () => {
     let rr = this.state.form;
     i++;
-    this.props.employment[i] = {
+    this.props.volunteering[i] = {
       id:i,
-      companyName: '',
-      companyTitle: '',
-      companyLocation:'',
-      companyFrom: '',
-      companyTo: '',
-      description:''
+      volunteeringName: '',
+      volunteeringTitle: '',
+      volunteeringLocation:'',
+      volunteeringFrom: '',
+      volunteeringTo: ''
     }
-    rr.push(<Employment key={i} employment={this.props.employment} employmentVal={this.props.employment[i]} employmentElm={this.state.form}/>)
+    rr.push(<Volunteering key={i} volunteering={this.props.volunteering} volunteeringVal={this.props.volunteering[i]} volunteeringElm={this.state.form}/>)
 
     this.setState({ form: rr} )
   }
@@ -83,17 +81,17 @@ class EmploymentList extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <h2> Employment </h2>
+        <h2> Volunteering </h2>
           { this.state.form.map( emp => emp) }
-        <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addEmployment}>
-          Add an Employment
+        <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addVolunteering}>
+          Add an Volunteering
         </Button>
       </div>
     );
   }
 }
-EmploymentList.propTypes = {
+VolunteeringList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EmploymentList);
+export default withStyles(styles)(VolunteeringList);

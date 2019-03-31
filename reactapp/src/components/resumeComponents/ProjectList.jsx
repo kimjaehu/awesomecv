@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Employment from './Employment'
+import Project from './Project'
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -39,42 +39,36 @@ const styles = theme => ({
   },
 });
 
-class EmploymentList extends Component {
+class ProjectList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.employment[i] = {
+    this.props.project[i] = {
       id:i,
-      companyName: '',
-      companyTitle: '',
-      companyLocation:'',
-      companyFrom: '',
-      companyTo: '',
-      description:''
+      projectName: '',
+      projectDescription: '',
+      projectLink:''
     }
     this.state = {
-      employment:1,
-      form: [<Employment key={i} employmentVal={this.props.employment[i]} />]
+      project:1,
+      form: [<Project key={i} projectVal={this.props.project[i]} />]
     }  
   }
 
-  employmentAddHandler = () => {
+  projectAddHandler = () => {
 
   }
 
-  addEmployment = () => {
+  addProject = () => {
     let rr = this.state.form;
     i++;
-    this.props.employment[i] = {
+    this.props.project[i] = {
       id:i,
-      companyName: '',
-      companyTitle: '',
-      companyLocation:'',
-      companyFrom: '',
-      companyTo: '',
-      description:''
+      projectName: '',
+      projectDescription: '',
+      projectLink:''
     }
-    rr.push(<Employment key={i} employment={this.props.employment} employmentVal={this.props.employment[i]} employmentElm={this.state.form}/>)
+    rr.push(<Project key={i} project={this.props.project} projectVal={this.props.project[i]} projectElm={this.state.form}/>)
 
     this.setState({ form: rr} )
   }
@@ -83,17 +77,17 @@ class EmploymentList extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <h2> Employment </h2>
-          { this.state.form.map( emp => emp) }
-        <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addEmployment}>
-          Add an Employment
+        <h2> Project </h2>
+          { this.state.form.map( pro => pro) }
+        <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addProject}>
+          Add an Project
         </Button>
       </div>
     );
   }
 }
-EmploymentList.propTypes = {
+ProjectList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EmploymentList);
+export default withStyles(styles)(ProjectList);
