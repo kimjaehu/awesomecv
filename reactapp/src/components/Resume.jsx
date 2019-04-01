@@ -5,6 +5,8 @@ import EducationList from './resumeComponents/EducationList';
 import EmploymentList from './resumeComponents/EmploymentList';
 import ProjectList from './resumeComponents/ProjectList';
 import VolunteeringList from './resumeComponents/VolunteeringList';
+import SkillList from './resumeComponents/SkillList';
+import LinkedInTest from './oauth/LinkedInTest';
 import axios from 'axios';
 
 class Resume extends Component {
@@ -12,14 +14,18 @@ class Resume extends Component {
   constructor(props) {
     super(props);
     this.state =  {
-                    basic:      {
+                      linkedin: {
+                                code: '',
+                                errorMessage: ''
+                                },
+                        basic:  {
                                 firstName: '',
                                 lastName: '',
                                 email: '',
                                 phoneNumber: '',
                                 address: '',
                                 },
-                    summary:    {
+                      summary:  {
                                 summary:'',
                                 }, 
                     education:  {
@@ -41,7 +47,12 @@ class Resume extends Component {
                                 count: 1,
                                 values:  {
                                 }
-                    }
+                                },
+                        skill:  {
+                                count: 1,
+                                values:  {
+                                }
+                                }
                   }
   }
 
@@ -93,6 +104,14 @@ class Resume extends Component {
     }
   }
 
+  skillHandler = (field) => {
+    return (event) => {
+      let skill = this.state.skill;
+      skill[field] = event.target.value;
+      this.setState({skill: skill})
+    }
+  }
+
   onClickHandler = (event) => {
     event.preventDefault();
     console.log(this.state)
@@ -106,13 +125,16 @@ class Resume extends Component {
   render() {
     return (
       <div>
+        <LinkedInTest linkedin={this.state.linkedin} />
         <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
         <Summary sum={this.state.summary} handler={this.summaryHandler}/>
         <EducationList education={this.state.education} handler={this.educationHandler} />
         <EmploymentList employment={this.state.employment} handler={this.employmentHandler} />
         <ProjectList project={this.state.project} handler={this.projectHandler} />
         <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} />
+        <SkillList skill={this.state.skill} handler={this.skillHandler} />
         
+
         <button onClick={this.onClickHandler}>Submit</button>
       </div>
     );

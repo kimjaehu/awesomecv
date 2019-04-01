@@ -67,11 +67,11 @@ class Skill extends Component {
         </article>
 
         <div>
-        <Select
-            onChange={ this.skillValueHandler('skillName') }
-            value={this.state.skillName}
+        <TextField
+            onChange={ this.skillValueHandler('skillDescription') }
+            value={this.state.skillDescription}
+            id="filled-full-width"
             label="Skill"
-            id="skill-select"
             className={classes.textField}
             placeholder="Skill"
             fullWidth
@@ -80,14 +80,7 @@ class Skill extends Component {
             InputLabelProps={{
               shrink: true,
             }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
+        />
 
         <Button variant="contained" color="secondary" className={classes.button} >
           <DeleteIcon className={classes.rightIcon} />

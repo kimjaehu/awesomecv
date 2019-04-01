@@ -80,7 +80,7 @@ class ProjectList extends Component {
         <h2> Project </h2>
           { this.state.form.map( pro => pro) }
         <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addProject}>
-          Add an Project
+          Add a Project
         </Button>
       </div>
     );
