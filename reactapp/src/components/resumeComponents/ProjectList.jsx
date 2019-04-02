@@ -51,7 +51,7 @@ class ProjectList extends Component {
     }
     this.state = {
       project:1,
-      form: [<Project key={i} projectVal={this.props.project[i]} />]
+     // form: [<Project key={i} projectVal={this.props.project[i]} />]
     }  
   }
 
@@ -60,17 +60,22 @@ class ProjectList extends Component {
   }
 
   addProject = () => {
-    let rr = this.state.form;
-    i++;
+    var i = this.state.project;
+    i++
     this.props.project[i] = {
       id:i,
       projectName: '',
       projectDescription: '',
-      projectLink:''
+      projectLink:'',
     }
-    rr.push(<Project key={i} project={this.props.project} projectVal={this.props.project[i]} projectElm={this.state.form}/>)
+    this.props.edit(this.props.project);
+    this.props.project[i].deleteProject = () => {
+      delete this.props.project[i];
+      this.props.edit(this.props.project);
 
-    this.setState({ form: rr} )
+    };
+
+  this.setState({project: i});
   }
 
   render() {
@@ -78,7 +83,8 @@ class ProjectList extends Component {
     return (
       <div>
         <h2> Project </h2>
-          { this.state.form.map( pro => pro) }
+          { Object.keys(this.props.project).map(i => 
+            <Project key={i} project={this.props.project} projectVal={this.props.project[i]}/>)}
         <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addProject}>
           Add a Project
         </Button>

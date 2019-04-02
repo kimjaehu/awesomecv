@@ -14,10 +14,6 @@ class Resume extends Component {
   constructor(props) {
     super(props);
     this.state =  {
-                      linkedin: {
-                                code: '',
-                                errorMessage: ''
-                                },
                         basic:  {
                                 firstName: '',
                                 lastName: '',
@@ -39,9 +35,7 @@ class Resume extends Component {
                                 }
                                   },
                       project:  {
-                                count: 1,
-                                values:  {
-                                        }
+                              
                                 },
                   volunteering:  {
                                 count: 1,
@@ -96,6 +90,10 @@ class Resume extends Component {
     }
   }
 
+  editProject = (newProjects) => {
+    this.setState({project: newProjects});
+  }
+
   volunteeringHandler = (field) => {
     return (event) => {
       let volunteering = this.state.volunteering;
@@ -125,12 +123,11 @@ class Resume extends Component {
   render() {
     return (
       <div>
-        <LinkedInTest linkedin={this.state.linkedin} />
         <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
         <Summary sum={this.state.summary} handler={this.summaryHandler}/>
         <EducationList education={this.state.education} handler={this.educationHandler} />
         <EmploymentList employment={this.state.employment} handler={this.employmentHandler} />
-        <ProjectList project={this.state.project} handler={this.projectHandler} />
+        <ProjectList project={this.state.project} handler={this.projectHandler} edit={this.editProject}/>
         <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} />
         <SkillList skill={this.state.skill} handler={this.skillHandler} />
         

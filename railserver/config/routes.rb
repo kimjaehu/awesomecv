@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :users, param: :_email
   post '/auth/login', to: 'authentication#login'
 
+  get '', to: 'linkedin#getToken'
+
+
   namespace :api do
     namespace :v1 do
       resources :users

@@ -64,7 +64,7 @@ class Project extends Component {
     return (
       <div className={classes.container} id={ this.props.projectVal.id }>
         <article>
-          <h4 className={classes.header}> Project { this.props.projectVal.id + 1 }</h4>
+          <h4 className={classes.header}> Project { this.props.projectVal.id }</h4>
         </article>
 
         <div>
@@ -113,7 +113,7 @@ class Project extends Component {
             }}
         />  
 
-        <Button variant="contained" color="secondary" className={classes.button} >
+        <Button variant="contained" color="secondary" className={classes.button} onClick={this.props.projectVal.deleteProject}>
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         </div>

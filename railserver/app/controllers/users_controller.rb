@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   # PUT /users/{username}
   def update
     unless @user.update(user_params)
