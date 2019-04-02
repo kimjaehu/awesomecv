@@ -1,6 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+// Material-Ui Tags
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,15 +12,23 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+// Material-Ui Icon
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import PersonIcon from '@material-ui/icons/Person';
+
+// Views Pages
 import Home from './Home';
 import Users from './Users';
 import Map from './Map';
-import Button from '@material-ui/core/Button';
-
+import Content from '../components/AdminJobFlow';
+import Navigator from '../components/DrawerList';
 
 const drawerWidth = 240;
 
@@ -139,7 +150,7 @@ class PersistentDrawerLeft extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <Button color="primary" className={classes.button} href="/users"> 
+          <Button color="primary" className={classes.button} href="/users">
 						Build a resume
 					</Button>
           <Divider />
