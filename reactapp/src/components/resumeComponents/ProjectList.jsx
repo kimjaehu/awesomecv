@@ -39,25 +39,23 @@ const styles = theme => ({
   },
 });
 
+
 class ProjectList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.project[i] = {
-      id:i,
-      projectName: '',
-      projectDescription: '',
-      projectLink:''
-    }
+    // this.props.project[i] = {
+    //   id:i,
+    //   projectName: '',
+    //   projectDescription: '',
+    //   projectLink:''
+    // }
     this.state = {
-      project:1,
+      project:0,
      // form: [<Project key={i} projectVal={this.props.project[i]} />]
     }  
   }
 
-  projectAddHandler = () => {
-
-  }
 
   addProject = () => {
     var i = this.state.project;

@@ -66,7 +66,7 @@ class Volunteering extends Component {
     return (
       <div className={classes.container} id={ this.props.volunteeringVal.id }>
         <article>
-          <h4 className={classes.header}> Volunteering { this.props.volunteeringVal.id + 1 }</h4>
+          <h4 className={classes.header}> Volunteering { this.props.volunteeringVal.id }</h4>
         </article>
 
         <div>
@@ -145,7 +145,12 @@ class Volunteering extends Component {
             }}
         />
         
-        <Button variant="contained" color="secondary" className={classes.button} >
+        <Button
+            variant='contained'
+            color='secondary'
+            className={classes.button}
+            onClick={this.props.volunteeringVal.deleteVolunteering}
+          >
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         </div>

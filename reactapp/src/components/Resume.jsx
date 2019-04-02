@@ -25,27 +25,14 @@ class Resume extends Component {
                                 summary:'',
                                 }, 
                     education:  {
-                                count: 1,
-                                values:  {
-                                        }
                                 },
                   employment:  {
-                                count: 1,
-                                values:  {
-                                }
-                                  },
-                      project:  {
-                              
                                 },
-                  volunteering:  {
-                                count: 1,
-                                values:  {
-                                }
+                      project:  {
+                                },
+                  volunteering: {
                                 },
                         skill:  {
-                                count: 1,
-                                values:  {
-                                }
                                 }
                   }
   }
@@ -90,8 +77,24 @@ class Resume extends Component {
     }
   }
 
+  editEducation = (newEducations) => {
+    this.setState({education: newEducations});
+  }
+
   editProject = (newProjects) => {
     this.setState({project: newProjects});
+  }
+  
+  editEmployment = (newEmployements) => {
+    this.setState({employment: newEmployements});
+  }
+
+  editVolunteering = (newVolunteerings) => {
+    this.setState({volunteering: newVolunteerings});
+  }
+
+  editSkill = (newSkills) => {
+    this.setState({skill: newSkills});
   }
 
   volunteeringHandler = (field) => {
@@ -113,23 +116,19 @@ class Resume extends Component {
   onClickHandler = (event) => {
     event.preventDefault();
     console.log(this.state)
-    // axios.post('http://localhost:3000/users', this.state)
-    // .then(response => {
-    //   console.log(response)
-    // })
-    // .catch(error => console.log(error))
   }
 
   render() {
     return (
       <div>
+        <LinkedInTest />
         <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
         <Summary sum={this.state.summary} handler={this.summaryHandler}/>
-        <EducationList education={this.state.education} handler={this.educationHandler} />
-        <EmploymentList employment={this.state.employment} handler={this.employmentHandler} />
+        <EducationList education={this.state.education} handler={this.educationHandler} edit={this.editEducation}/>
+        <EmploymentList employment={this.state.employment} handler={this.employmentHandler} edit={this.editEmployment}/>
         <ProjectList project={this.state.project} handler={this.projectHandler} edit={this.editProject}/>
-        <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} />
-        <SkillList skill={this.state.skill} handler={this.skillHandler} />
+        <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} edit={this.editVolunteering}/>
+        <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
         
 
         <button onClick={this.onClickHandler}>Submit</button>

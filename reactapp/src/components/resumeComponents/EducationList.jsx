@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-let i = 0;
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -43,25 +41,20 @@ class EducationList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.education[i] = {
-      id:i,
-      schoolName: '',
-      schoolFrom: '',
-      schoolTo: '',
-      degree: ''
-    }
+    // this.props.education[i] = {
+    //   id:i,
+    //   schoolName: '',
+    //   schoolFrom: '',
+    //   schoolTo: '',
+    //   degree: ''
+    // }
     this.state = {
-      education:1,
-      form: [<Education key={i} educationVal={this.props.education[i]} />]
+      education:0
     }  
   }
 
-  educationAddHandler = () => {
-
-  }
-
   addEducation = () => {
-    let rr = this.state.form;
+    let i = this.state.education;
     i++;
     this.props.education[i] = {
       id:i,
@@ -70,24 +63,24 @@ class EducationList extends Component {
       schoolTo: '',
       degree: ''
     }
-    rr.push(<Education key={i} education={this.props.education} educationVal={this.props.education[i]} educationElm={this.state.form}/>)
+    this.props.edit(this.props.education);
+    this.props.education[i].deleteEducation = () => {
+      delete this.props.education[i];
+      this.props.edit(this.props.education);
 
-    this.setState({ form: rr} )
+    };
+
+  this.setState({education: i});
   }
-
-  // deleteEducation = (index, event) => {
-  //   const education = Object.assign([], this.state.forms)
-  //   education.splice(index, 1)
-  //   this.setState({education:education})
-  // }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
         <h2> Education </h2>
-          { this.state.form.map( edu => edu) }
-        <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addEducation }>
+        { Object.keys(this.props.education).map(i => 
+            <Education key={i} education={this.props.education} educationVal={this.props.education[i]}/>)}
+        <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addEducation}>
           Add an Education
         </Button>
       </div>

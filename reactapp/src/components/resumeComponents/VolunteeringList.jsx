@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-let i = 0;
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -43,26 +41,21 @@ class VolunteeringList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.volunteering[i] = {
-      id:i,
-      volunteeringName: '',
-      volunteeringTitle: '',
-      volunteeringLocation:'',
-      volunteeringFrom: '',
-      volunteeringTo: ''
-    }
+    // this.props.volunteering[i] = {
+    //   id:i,
+    //   volunteeringName: '',
+    //   volunteeringTitle: '',
+    //   volunteeringLocation:'',
+    //   volunteeringFrom: '',
+    //   volunteeringTo: ''
+    // }
     this.state = {
-      volunteering:1,
-      form: [<Volunteering key={i} volunteeringVal={this.props.volunteering[i]} />]
+      volunteering:0
     }  
   }
 
-  VolunteeringAddHandler = () => {
-
-  }
-
   addVolunteering = () => {
-    let rr = this.state.form;
+    let i = this.state.volunteering;
     i++;
     this.props.volunteering[i] = {
       id:i,
@@ -72,9 +65,14 @@ class VolunteeringList extends Component {
       volunteeringFrom: '',
       volunteeringTo: ''
     }
-    rr.push(<Volunteering key={i} volunteering={this.props.volunteering} volunteeringVal={this.props.volunteering[i]} volunteeringElm={this.state.form}/>)
+    this.props.edit(this.props.volunteering);
+    this.props.volunteering[i].deleteVolunteering = () => {
+      delete this.props.volunteering[i];
+      this.props.edit(this.props.volunteering);
 
-    this.setState({ form: rr} )
+    };
+
+  this.setState({volunteering: i});
   }
 
   render() {
@@ -82,7 +80,8 @@ class VolunteeringList extends Component {
     return (
       <div>
         <h2> Volunteering </h2>
-          { this.state.form.map( emp => emp) }
+        { Object.keys(this.props.volunteering).map(i => 
+            <Volunteering key={i} volunteering={this.props.volunteering} volunteeringVal={this.props.volunteering[i]}/>)}
         <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addVolunteering}>
           Add an Volunteering
         </Button>

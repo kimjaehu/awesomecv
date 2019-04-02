@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-let i = 0;
-
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -37,48 +35,47 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     minWidth: 120,
   },
+
 });
 
 class SkillList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.skill[i] = {
-      id:i,
-      skillName: '',
-      skillDescription: '',
-      skillLink:''
-    }
+    // this.props.skill[i] = {
+    //   id:i,
+    //   skillName: '',
+    // }
     this.state = {
-      skill:1,
-      form: [<Skill key={i} skillVal={this.props.skill[i]} />]
+      skill:0
     }  
   }
 
-  skillAddHandler = () => {
-
-  }
-
   addSkill = () => {
-    let rr = this.state.form;
+    var i = this.state.skill;
     i++;
     this.props.skill[i] = {
       id:i,
-      skillName: '',
-      skillDescription: '',
-      skillLink:''
+      skillName: ''
     }
-    rr.push(<Skill key={i} skill={this.props.skill} skillVal={this.props.skill[i]} skillElm={this.state.form}/>)
+    this.props.edit(this.props.skill);
+    this.props.skill[i].deleteSkill = () => {
+      delete this.props.skill[i];
+      this.props.edit(this.props.skill);
 
-    this.setState({ form: rr} )
+    };
+
+  this.setState({skill: i});
   }
+
 
   render() {
     const { classes } = this.props;
     return (
       <div>
         <h2> Skill </h2>
-          { this.state.form.map( pro => pro) }
+        { Object.keys(this.props.skill).map(i => 
+            <Skill key={i} skill={this.props.skill} skillVal={this.props.skill[i]}/>)}
         <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addSkill}>
           Add a Skill
         </Button>

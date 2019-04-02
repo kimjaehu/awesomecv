@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-let i = 0;
 
 const styles = theme => ({
   container: {
@@ -43,27 +42,22 @@ class EmploymentList extends Component {
 
   constructor(props) {
     super(props);
-    this.props.employment[i] = {
-      id:i,
-      companyName: '',
-      companyTitle: '',
-      companyLocation:'',
-      companyFrom: '',
-      companyTo: '',
-      description:''
-    }
+    // this.props.employment[i] = {
+    //   id:i,
+    //   companyName: '',
+    //   companyTitle: '',
+    //   companyLocation:'',
+    //   companyFrom: '',
+    //   companyTo: '',
+    //   description:''
+    // }
     this.state = {
-      employment:1,
-      form: [<Employment key={i} employmentVal={this.props.employment[i]} />]
+      employment:0,
     }  
   }
 
-  employmentAddHandler = () => {
-
-  }
-
   addEmployment = () => {
-    let rr = this.state.form;
+    var i = this.state.employment;
     i++;
     this.props.employment[i] = {
       id:i,
@@ -74,9 +68,14 @@ class EmploymentList extends Component {
       companyTo: '',
       description:''
     }
-    rr.push(<Employment key={i} employment={this.props.employment} employmentVal={this.props.employment[i]} employmentElm={this.state.form}/>)
+    this.props.edit(this.props.employment);
+    this.props.employment[i].deleteEmployment = () => {
+      delete this.props.employment[i];
+      this.props.edit(this.props.employment);
 
-    this.setState({ form: rr} )
+    };
+
+  this.setState({employment: i});
   }
 
   render() {
@@ -84,7 +83,8 @@ class EmploymentList extends Component {
     return (
       <div>
         <h2> Employment </h2>
-          { this.state.form.map( emp => emp) }
+        { Object.keys(this.props.employment).map(i => 
+            <Employment key={i} employment={this.props.employment} employmentVal={this.props.employment[i]}/>)}
         <Button variant="outlined" color="primary" className={classes.button } onClick={ this.addEmployment}>
           Add an Employment
         </Button>

@@ -1,47 +1,59 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+// import React, { Component } from 'react';
+// import { render } from 'react-dom';
+// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+// import CurrentLocation from './Map';
 
-const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
+// const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
+ 
+// const mapStyles = {
+//   width: '100%',
+//   height: '100%'
+// };
 
-class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.onScriptLoad = this.onScriptLoad.bind(this)
-  }
+// export class MapContainer extends Component {
+//   state = {
+//     showingInfoWindow: false,  //Hides or the shows the infoWindow
+//     activeMarker: {},          //Shows the active marker upon click
+//     selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
+//   };
 
-  onScriptLoad() {
-    const map = new window.google.maps.Map(
-      document.getElementById('map'),{
-      center: {lat: 43.6532, lng: -79.3832},
-          zoom: 8});
-  }
+//   onMarkerClick = (props, marker, e) =>
+//   this.setState({
+//     selectedPlace: props,
+//     activeMarker: marker,
+//     showingInfoWindow: true
+//   });
 
-  componentDidMount() {
-    if (!window.google) {
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&callback=initMap`;
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
-      // Below is important. 
-      //We cannot access google.maps until it's finished loading
-      s.addEventListener('load', e => {
-        this.onScriptLoad()
-      })
-    } else {
-      this.onScriptLoad()
-    }
-  }
+// onClose = props => {
+//   if (this.state.showingInfoWindow) {
+//     this.setState({
+//       showingInfoWindow: false,
+//       activeMarker: null
+//     });
+//   }
+//   };
 
-  render() {
-    const styles = {
-      width: window.innerWidth,
-      height: window.innerHeight
-    }
-    return (
-      <div style={styles} id={'map'} />
-    );
-  }
-}
+//   render() {
+//     return (
+//       <CurrentLocation
+//         centerAroundCurrentLocation
+//         google={this.props.google}
+//       >
+//         <Marker onClick={this.onMarkerClick} name={'current location'} />
+//         <InfoWindow
+//           marker={this.state.activeMarker}
+//           visible={this.state.showingInfoWindow}
+//           onClose={this.onClose}
+//         >
+//           <div>
+//             <h4>{this.state.selectedPlace.name}</h4>
+//           </div>
+//         </InfoWindow>
+//       </CurrentLocation>
+//     );
+//   }
+// }
 
-export default Map
+// export default GoogleApiWrapper({
+//   apiKey: GOOGLE_MAP_KEY
+// })(MapContainer);

@@ -67,7 +67,7 @@ class Employment extends Component {
     return (
       <div className={classes.container} id={ this.props.employmentVal.id }>
         <article>
-          <h4 className={classes.header}> Employment { this.props.employmentVal.id + 1 }</h4>
+          <h4 className={classes.header}> Employment { this.props.employmentVal.id }</h4>
         </article>
 
         <div>
@@ -162,7 +162,12 @@ class Employment extends Component {
               shrink: true,
             }}
         />
-        <Button variant="contained" color="secondary" className={classes.button} >
+        <Button
+            variant='contained'
+            color='secondary'
+            className={classes.button}
+            onClick={this.props.employmentVal.deleteEmployment}
+          >
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         </div>

@@ -60,7 +60,9 @@ class Education extends Component {
     return (
       <div className={classes.container} id={ this.props.educationVal.id }>
         <article>
-          <h4 className={classes.header}>Education { this.props.educationVal.id + 1 }</h4>
+        <h4 className={classes.header}>
+            Education {this.props.educationVal.id }
+          </h4>
         </article>
 
         <div>
@@ -109,7 +111,7 @@ class Education extends Component {
             }}
         />
 
-<TextField
+        <TextField
             onChange={ this.educationValueHandler('schoolTo') }
             value={this.state.schoolTo}
             id="filled-full-width"
@@ -123,7 +125,12 @@ class Education extends Component {
               shrink: true,
             }}
         />
-        <Button variant="contained" color="secondary" className={classes.button} >
+          <Button
+            variant='contained'
+            color='secondary'
+            className={classes.button}
+            onClick={this.props.educationVal.deleteEducation}
+          >
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         </div>
