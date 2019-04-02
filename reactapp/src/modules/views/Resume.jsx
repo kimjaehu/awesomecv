@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import BasicInfo from './resumeComponents/BasicInfo';
-import Summary from './resumeComponents/Summary';
-import EducationList from './resumeComponents/EducationList';
-import EmploymentList from './resumeComponents/EmploymentList';
-import ProjectList from './resumeComponents/ProjectList';
-import VolunteeringList from './resumeComponents/VolunteeringList';
-import SkillList from './resumeComponents/SkillList';
-import LinkedInTest from './oauth/LinkedInTest';
+import BasicInfo from '../../components/resumeComponents/BasicInfo';
+import Summary from '../../components/resumeComponents/Summary';
+import EducationList from '../../components/resumeComponents/EducationList';
+import EmploymentList from '../../components/resumeComponents/EmploymentList';
+import ProjectList from '../../components/resumeComponents/ProjectList';
+import VolunteeringList from '../../components/resumeComponents/VolunteeringList';
+import SkillList from '../../components/resumeComponents/SkillList';
+import LinkedInTest from '../../components/oauth/LinkedInTest';
 import axios from 'axios';
 
 class Resume extends Component {
