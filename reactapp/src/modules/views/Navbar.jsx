@@ -24,19 +24,19 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import PersonIcon from '@material-ui/icons/Person';
 
 // Views Pages
-import Home from './Home';
-import Users from './Users';
-import Map from './Map';
-import Content from '../components/AdminJobFlow';
-import Navigator from '../components/DrawerList';
+
+import Users from './Users.jsx';
+import Map from './Map.jsx';
+import Content from '../components/recruiterComponents/AdminJobFlow';
+import Navigator from '../components/recruiterComponents/DrawerList';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
     display: 'flex',
-	},
-	button: {
+  },
+  button: {
     margin: theme.spacing.unit,
   },
   input: {
@@ -69,8 +69,13 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    background: "#28373d",
   },
   drawerHeader: {
+    // backgroundColor: '#ffa898',
+    // color: "#fff",
+  },
+  drawerSpace: {
     display: 'flex',
     alignItems: 'center',
     padding: '0 8px',
@@ -79,6 +84,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
+    backgroundColor: '#EFF1F4',
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -118,7 +124,7 @@ class PersistentDrawerLeft extends React.Component {
         <AppBar
           position="fixed"
           className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
+          [classes.appBarShift]: open,
           })}
         >
           <Toolbar disableGutters={!open}>
@@ -135,46 +141,64 @@ class PersistentDrawerLeft extends React.Component {
             </Typography>
           </Toolbar>
         </AppBar>
+
         <Drawer
           className={classes.drawer}
           variant="persistent"
           anchor="left"
           open={open}
           classes={{
-            paper: classes.drawerPaper,
+          paper: classes.drawerPaper,
           }}
         >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton>
+
+          <div className={classNames(classes.drawerHeader, classes.drawerSpace)}>
+
+          <ListItem className={classNames(classes.item, classes.itemCategory)}>
+            <ListItemIcon>
+              <PersonIcon color="secondary"/>
+            </ListItemIcon>
+            <ListItemText
+              classes={{
+                    primary: classes.itemPrimary,
+                    textDense: classes.textDense,
+              }}
+              fontWeight="fontWeightMedium"
+            >
+              Username
+            </ListItemText>
+          </ListItem>
+
+          <IconButton onClick={this.handleDrawerClose}>
+          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
           </div>
           <Divider />
-          <Button color="primary" className={classes.button} href="/users">
-						Build a resume
-					</Button>
-          <Divider />
-          <Button color="primary" className={classes.button} href="/map">
-						find a job
-					</Button>
+
+          <Navigator/>
+
         </Drawer>
         <main
-          className={classNames(classes.content, {
-            [classes.contentShift]: open,
-          })}
+        className={classNames(classes.content, {
+        [classes.contentShift]: open,
+        })}
         >
-          <div className={classes.drawerHeader} />
+          <div className={classes.drawerSpace} />
           <main className={classes.content}>
-            <div className={classes.toolbar} />
-						<Switch>
-									<Route exact path="/" component={Home} />
-									<Route path="/users" component={Users} />
-									<Route path="/map" component={Map} />
-						</Switch>
-					</main>
+
+           <div className={classes.toolbar} />
+          <Switch>
+                <Route path="/admin" component={Content} />
+                <Route path="/users" component={Users} />
+                <Route path="/map" component={Map} />
+          </Switch>
+
+          </main>
         </main>
       </div>
     );
+
+
   }
 }
 

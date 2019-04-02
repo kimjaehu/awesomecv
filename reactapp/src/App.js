@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import withRoot from './modules/withRoot';
 
-import Navbar from './components/Navbar';
+import PersistentDrawerLeft from './modules/views/Navbar.jsx';
 
 class App extends Component {
 
@@ -13,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-          <Navbar />
+          <PersistentDrawerLeft />
       </Router>
     );
   }

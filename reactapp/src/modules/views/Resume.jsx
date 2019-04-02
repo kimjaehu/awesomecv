@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import BasicInfo from '../../components/resumeComponents/BasicInfo';
-import Summary from '../../components/resumeComponents/Summary';
-import EducationList from '../../components/resumeComponents/EducationList';
-import EmploymentList from '../../components/resumeComponents/EmploymentList';
-import ProjectList from '../../components/resumeComponents/ProjectList';
-import VolunteeringList from '../../components/resumeComponents/VolunteeringList';
-import SkillList from '../../components/resumeComponents/SkillList';
-import LinkedInTest from '../../components/oauth/LinkedInTest';
+import BasicInfo from '../components/resumeComponents/BasicInfo';
+import Summary from '../components/resumeComponents/Summary';
+import EducationList from '../components/resumeComponents/EducationList';
+import EmploymentList from '../components/resumeComponents/EmploymentList';
+import ProjectList from '../components/resumeComponents/ProjectList';
+import VolunteeringList from '../components/resumeComponents/VolunteeringList';
+import SkillList from '../components/resumeComponents/SkillList';
+import LinkedInTest from '../components/oauth/LinkedInTest';
 import axios from 'axios';
 
 class Resume extends Component {
@@ -23,7 +23,7 @@ class Resume extends Component {
                                 },
                       summary:  {
                                 summary:'',
-                                }, 
+                                },
                     education:  {
                                 },
                   employment:  {
@@ -44,7 +44,7 @@ class Resume extends Component {
       this.setState({basic: basic})
     }
   }
-   
+
   summaryHandler = (field) => {
     return (event) => {
       let summary = this.state.summary;
@@ -52,7 +52,7 @@ class Resume extends Component {
       this.setState({summary: summary})
     }
   }
-  
+
   educationHandler = (field) => {
     return (event) => {
       let education = this.state.education;
@@ -84,7 +84,7 @@ class Resume extends Component {
   editProject = (newProjects) => {
     this.setState({project: newProjects});
   }
-  
+
   editEmployment = (newEmployements) => {
     this.setState({employment: newEmployements});
   }
@@ -129,7 +129,7 @@ class Resume extends Component {
         <ProjectList project={this.state.project} handler={this.projectHandler} edit={this.editProject}/>
         <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} edit={this.editVolunteering}/>
         <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
-        
+
 
         <button onClick={this.onClickHandler}>Submit</button>
       </div>
