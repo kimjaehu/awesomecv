@@ -6,6 +6,7 @@ import EmploymentList from '../components/resumeComponents/EmploymentList';
 import ProjectList from '../components/resumeComponents/ProjectList';
 import VolunteeringList from '../components/resumeComponents/VolunteeringList';
 import SkillList from '../components/resumeComponents/SkillList';
+import Button from '@material-ui/core/Button';
 import LinkedInTest from '../components/oauth/LinkedInTest';
 import axios from 'axios';
 
@@ -121,7 +122,6 @@ class Resume extends Component {
   render() {
     return (
       <div>
-        <LinkedInTest />
         <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
         <Summary sum={this.state.summary} handler={this.summaryHandler}/>
         <EducationList education={this.state.education} handler={this.educationHandler} edit={this.editEducation}/>
@@ -131,7 +131,7 @@ class Resume extends Component {
         <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
 
 
-        <button onClick={this.onClickHandler}>Submit</button>
+        <Button variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
       </div>
     );
   }
