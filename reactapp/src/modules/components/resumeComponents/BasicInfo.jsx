@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import FilledInput from '@material-ui/core/FilledInput';
 
 const styles = theme => ({
   container: {
@@ -10,8 +15,7 @@ const styles = theme => ({
     flexDirection: "column"
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    margin: theme.spacing.unit,
     width: 200,
   },
   header: {
@@ -19,13 +23,36 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     marginBottom: 0,
   },
-  address: {
+  streetAddress: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 400,
   },
+  selection: {
+    margin: theme.spacing.unit,
+    width: 200,
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+  },
 });
 
+const provinceSelection = [
+  'BC',
+  'AB',
+  'SK',
+  'MB',
+  'ON',
+  'QC',
+  'NB',
+  'PE',
+  'NS',
+  'NL',
+  'YT',
+  'NT',
+  'NU'
+]
 
 class BasicInfo extends Component {
 
@@ -102,11 +129,11 @@ class BasicInfo extends Component {
         <div>
           <TextField
             id="filled-full-width"
-            label="Address"
-            value={this.props.info.address}
-            onChange={this.props.handler('address')}
+            label="Street Address"
+            value={this.props.info.streetAddress}
+            onChange={this.props.handler('streetAddress')}
             className={classes.address}
-            placeholder="Address"
+            placeholder="Street Address"
             fullWidth
             margin="normal"
             variant="filled"
@@ -114,6 +141,69 @@ class BasicInfo extends Component {
               shrink: true,
             }}
           />
+
+          <TextField
+            id="filled-full-width"
+            label="City"
+            value={this.props.info.city}
+            onChange={this.props.handler('city')}
+            className={classes.textField}
+            placeholder="City"
+            fullWidth
+            margin="normal"
+            variant="filled"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          
+          <TextField
+            id="filled-full-width"
+            label="Province"
+            value={this.props.info.province}
+            onChange={this.props.handler('province')}
+            className={classes.textField}
+            placeholder="Province"
+            fullWidth
+            margin="normal"
+            variant="filled"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          {/* <FormControl className={classes.formControl}>
+            <InputLabel shrink htmlFor="age-label-placeholder">
+              Province
+            </InputLabel>
+            <Select
+              onChange={ this.props.handler('province') }
+              value={this.props.info.province}
+              className={classes.textField}
+              fullWidth
+              input={<FilledInput name="province" id="filled-province" margin="normal"/> }
+            >
+              {provinceSelection.map((currentValue) => {
+                console.log(currentValue)
+                return <MenuItem value={currentValue}>{currentValue}</MenuItem>
+              })}
+            </Select>
+          </FormControl> */}
+
+          <TextField
+            id="filled-full-width"
+            label="Postal Code"
+            value={this.props.info.postalCode}
+            onChange={this.props.handler('postalCode')}
+            className={classes.textField}
+            placeholder="Postal Code"
+            fullWidth
+            margin="normal"
+            variant="filled"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+
         </div>
       </div>
     );

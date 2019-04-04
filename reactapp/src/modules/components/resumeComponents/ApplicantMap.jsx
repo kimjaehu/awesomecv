@@ -1,72 +1,26 @@
-// import React, { Component } from 'react';
-// import { render } from 'react-dom';
-// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-// import CurrentLocation from '../components/mapComponents/Location';
-
-// const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
-
-// export class MapContainer extends Component {
-//   state = {
-//     showingInfoWindow: false,  //Hides or the shows the infoWindow
-//     activeMarker: {},          //Shows the active marker upon click
-//     selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
-//   };
-
-//   onMarkerClick = (props, marker, e) =>
-//   this.setState({
-//     selectedPlace: props,
-//     activeMarker: marker,
-//     showingInfoWindow: true
-//   });
-
-// onClose = props => {
-//   if (this.state.showingInfoWindow) {
-//     this.setState({
-//       showingInfoWindow: false,
-//       activeMarker: null
-//     });
-//   }
-//   };
-
-//   render() {
-//     return (
-//       <CurrentLocation
-//         centerAroundCurrentLocation
-//         google={this.props.google}
-//       >
-//         <Marker onClick={this.onMarkerClick} name={'current location'} />
-//         <InfoWindow
-//           marker={this.state.activeMarker}
-//           visible={this.state.showingInfoWindow}
-//           onClose={this.onClose}
-//         >
-//           <div>
-//             <h4>{this.state.selectedPlace.name}</h4>
-//           </div>
-//         </InfoWindow>
-//       </CurrentLocation>
-//     );
-//   }
-// }
-
-// export default GoogleApiWrapper({
-//   apiKey: GOOGLE_MAP_KEY
-// })(MapContainer);
-
 import React, { Component } from 'react';
-import '../../App.css';
+import '../../../App.css';
+import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
 
+const styles = theme => ({
+  textField: {
+    margin: theme.spacing.unit,
+    width: "auto",
+  },
+})
 class Map extends Component {
 
   state = {
-    jobs: [{lat: 43.6532, lng: -79.3832},{lat: 43.6352, lng: -79.3862}]
+    awesomeJobs:[{lat: 43.6532, lng: -79.3832}],
+    indeedJobs: [{lat: 43.1532, lng: -79.1832},{lat: 43.6352, lng: -79.3862}]
   }
 
   componentDidMount() {
-    // this.getJobs()
+    // this.getAwesomeJobs()
+    // this.getIndeedJobs()
     this.renderMap() // <- remove after information from server
   }
 
@@ -75,7 +29,7 @@ class Map extends Component {
     window.initMap = this.initMap
   }
   
-  // getJobs =() => {
+  // getAwesomeJobs =() => {
   //   const endPoint = "localhost:3000"
 
   //   axios.get(endPoint)
@@ -90,6 +44,30 @@ class Map extends Component {
   //     })
   // }
 
+  // Indeed integration
+    // getIndeedJobs =() => {
+    //   const endPoint = "http://api.indeed.com/ads/apisearch?"
+    //   const parameters ={
+    //     publisher: "",
+    //     v:"2",
+    //     userip:"",
+    //     useragent: "",
+    //     format: "json",
+    //     q:"",
+    //     l:"",
+    //     fromage: "35"
+    //   }
+
+    //   axios.get(endPoint + new URLSearchParams(parameters))
+    //     .then(response => {
+    //       console.log(response) //response.results.latitude & response.results.latitude
+    //     })
+    //     .catch(err => {
+    //       console.log(`Error: ${err}`)
+    //     })
+    // }
+
+
   initMap = () => {
 
     //create a map
@@ -102,7 +80,7 @@ class Map extends Component {
     let infowindow = new window.google.maps.InfoWindow();
 
       // display markers
-      this.state.jobs.map(job => {
+      this.state.awesomeJobs.map(job => {
 
         var contentString = `Job Title: ` //${job.title}
 
@@ -131,6 +109,22 @@ class Map extends Component {
   render() {
     return (
       <main>
+        {/* <div>
+          <TextField
+              id="filled-full-width"
+              label="Job title"
+              value={this.props.info.lastName}
+              onChange={this.props.handler('lastName')}
+              className={classes.textField}
+              placeholder="Last Name"
+              fullWidth
+              margin="normal"
+              variant="filled"
+              InputLabelProps={{
+                shrink: true,
+              }}
+          />
+        </div> */}
         <div id="map"></div>
       </main>
     )

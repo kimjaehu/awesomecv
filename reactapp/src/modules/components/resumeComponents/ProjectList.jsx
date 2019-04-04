@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-let i = 0;
-
 const styles = theme => ({
   container: {
     display: 'flex',

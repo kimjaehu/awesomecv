@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import BasicInfo from '../components/resumeComponents/BasicInfo';
-import Summary from '../components/resumeComponents/Summary';
-import EducationList from '../components/resumeComponents/EducationList';
-import EmploymentList from '../components/resumeComponents/EmploymentList';
-import ProjectList from '../components/resumeComponents/ProjectList';
-import VolunteeringList from '../components/resumeComponents/VolunteeringList';
-import SkillList from '../components/resumeComponents/SkillList';
+import BasicInfo from './BasicInfo';
+import Summary from './Summary';
+import EducationList from './EducationList';
+import EmploymentList from './EmploymentList';
+import ProjectList from './ProjectList';
+import VolunteeringList from './VolunteeringList';
+import SkillList from './SkillList';
 import Button from '@material-ui/core/Button';
-import LinkedInTest from '../components/oauth/LinkedInTest';
+import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import LinkedInTest from '../oauth/LinkedInTest';
 import axios from 'axios';
+
+
+  const styles = theme => ({
+    root: {
+      maxWidth: 924,
+      margin: 'auto',
+      paddingTop: theme.spacing.unit * 2,
+      paddingBottom: theme.spacing.unit * 2,
+    },
+  });
 
 class Resume extends Component {
 
@@ -20,7 +34,10 @@ class Resume extends Component {
                                 lastName: '',
                                 email: '',
                                 phoneNumber: '',
-                                address: '',
+                                streetAddress: '',
+                                city: '',
+                                province: '',
+                                postalCode: '',
                                 },
                       summary:  {
                                 summary:'',
@@ -37,7 +54,7 @@ class Resume extends Component {
                                 }
                   }
   }
-
+  
   basicHandler = (field) => {
     return (event) => {
       let basic = this.state.basic;
@@ -120,21 +137,34 @@ class Resume extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
-        <Summary sum={this.state.summary} handler={this.summaryHandler}/>
-        <EducationList education={this.state.education} handler={this.educationHandler} edit={this.editEducation}/>
-        <EmploymentList employment={this.state.employment} handler={this.employmentHandler} edit={this.editEmployment}/>
-        <ProjectList project={this.state.project} handler={this.projectHandler} edit={this.editProject}/>
-        <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} edit={this.editVolunteering}/>
-        <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
+        <Paper className={classes.root} elevation={1}>
+          <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
+          <Divider />
+          <Summary sum={this.state.summary} handler={this.summaryHandler}/>
+          <Divider />
+          <EducationList education={this.state.education} handler={this.educationHandler} edit=
+          {this.editEducation}/>
+          <Divider />
+          <EmploymentList employment={this.state.employment} handler={this.employmentHandler} edit={this.editEmployment}/>
+          <Divider />
+          <ProjectList project={this.state.project} handler={this.projectHandler} edit={this.editProject}/>
+          <Divider />
+          <VolunteeringList volunteering={this.state.volunteering} handler={this.volunteeringHandler} edit={this.editVolunteering}/>
+          <Divider />
+          <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
+          <Divider />
 
-
-        <Button variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
+          <Button variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
+        </Paper>
       </div>
     );
   }
 }
+Resume.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default Resume;
+export default withStyles(styles)(Resume);

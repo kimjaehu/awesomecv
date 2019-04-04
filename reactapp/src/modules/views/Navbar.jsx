@@ -25,8 +25,8 @@ import PersonIcon from '@material-ui/icons/Person';
 
 // Views Pages
 
-import Users from './Users.jsx';
-import Map from './Map.jsx';
+import Users from './Users';
+import Map from '../components/resumeComponents/ApplicantMap';
 import Content from '../components/recruiterComponents/AdminJobFlow';
 import Navigator from '../components/recruiterComponents/DrawerList';
 
