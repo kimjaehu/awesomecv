@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   # get '', to: 'linkedin#getToken'
 
 
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :users
-      resources :profiles
+      resources :users, param: :_email
+      post '/auth/login', to: 'authentication#login'
+      resources :users do
+        resources :profiles
+      end
     end
   end
 

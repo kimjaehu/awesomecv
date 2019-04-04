@@ -3,8 +3,8 @@
 
 module Api::V1
 class UsersController < ApplicationController
-  # before_action :authorize_request, except: :create
-  # before_action :find_user, except: %i[create index]
+  before_action :authorize_request, except: :create
+  before_action :find_user, except: %i[create index]
 
   # GET /users
   def index
@@ -20,10 +20,12 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
+    puts "IS VALID: #{@user.valid?}"
+    puts @user.errors.messages
     if @user.save
       render json: @user, status: :created
     else
-      render json: { errors: @user.errors.full_messages },
+      render json: { errors: @user.errors.messages },
              status: :unprocessable_entity
     end
   end
@@ -44,15 +46,19 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by_email!(params[:_email])
+    @user = User.find_by_email!(params[:user][:email])
     rescue ActiveRecord::RecordNotFound
       render json: { errors: 'User not found' }, status: :not_found
   end
 
+  # def user_params
+  #   params.permit(
+  #     :email, :password, :password_confirmation
+  #   )
+  # end
   def user_params
-    params.permit(
-      :email, :password, :password_confirmation
-    )
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
+
 end
 end
