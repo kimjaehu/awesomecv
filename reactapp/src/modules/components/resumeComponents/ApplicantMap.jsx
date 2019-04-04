@@ -9,8 +9,10 @@ const styles = theme => ({
   textField: {
     margin: theme.spacing.unit,
     width: "auto",
+    height: "auto",
   },
 })
+
 class Map extends Component {
 
   state = {
@@ -109,22 +111,6 @@ class Map extends Component {
   render() {
     return (
       <main>
-        {/* <div>
-          <TextField
-              id="filled-full-width"
-              label="Job title"
-              value={this.props.info.lastName}
-              onChange={this.props.handler('lastName')}
-              className={classes.textField}
-              placeholder="Last Name"
-              fullWidth
-              margin="normal"
-              variant="filled"
-              InputLabelProps={{
-                shrink: true,
-              }}
-          />
-        </div> */}
         <div id="map"></div>
       </main>
     )

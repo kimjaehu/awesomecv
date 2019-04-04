@@ -17,10 +17,12 @@ import axios from 'axios';
 
   const styles = theme => ({
     root: {
-      maxWidth: 924,
-      margin: 'auto',
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2,
+    },
+    button: {
+      marginTop:20,
+      margin: theme.spacing.unit,
     },
   });
 
@@ -157,7 +159,7 @@ class Resume extends Component {
           <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
           <Divider />
 
-          <Button variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
+          <Button className={classes.button} variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
         </Paper>
       </div>
     );

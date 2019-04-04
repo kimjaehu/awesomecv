@@ -11,7 +11,7 @@ import ApplicantMap from '../components/resumeComponents/ApplicantMap'
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography component="div" dir={dir} style={{ padding: "auto", margin: "auto"}}>
       {children}
     </Typography>
   );
@@ -24,10 +24,8 @@ TabContainer.propTypes = {
 
 const styles = theme => ({
   root: {
-    maxWidth: 924,
-    margin: 'auto',
     backgroundColor: theme.palette.background.paper,
-    
+    margin: 'auto',
   },
 });
 
