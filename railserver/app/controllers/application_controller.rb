@@ -14,7 +14,7 @@ class ApplicationController < ActionController::API
     # header = request.headers['Authorization']
     # header = header.split(' ').last if header
     begin
-      @user = User.find(params[:id])
+      @user = User.find(params[:auth][:user_id])
       @decoded = JsonWebToken.decode(header)
       raise AccessDenied if @user.id != @decoded[:user_id]
       # @current_user = User.find(@decoded[:user_id])
