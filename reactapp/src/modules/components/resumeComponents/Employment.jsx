@@ -24,7 +24,7 @@ const styles = theme => ({
   description: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 800,
+    maxWidth: 800,
   },
   header: {
     marginLeft: theme.spacing.unit,

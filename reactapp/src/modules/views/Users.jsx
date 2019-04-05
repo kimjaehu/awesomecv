@@ -11,7 +11,7 @@ import ApplicantMap from '../components/resumeComponents/ApplicantMap'
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: "auto", margin: "auto"}}>
+    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
       {children}
     </Typography>
   );
@@ -24,12 +24,12 @@ TabContainer.propTypes = {
 
 const styles = theme => ({
   root: {
+    marginTop:theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
-    margin: 'auto',
   },
 });
 
-class Home extends Component {
+class Users extends Component {
   state = {
     value: 0,
   };
@@ -75,9 +75,9 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {
+Users.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Home);
+export default withStyles(styles, { withTheme: true })(Users);

@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import FilledInput from '@material-ui/core/FilledInput';
+
 
 const styles = theme => ({
   container: {
@@ -15,13 +11,13 @@ const styles = theme => ({
     flexDirection: "column"
   },
   textField: {
-    margin: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     width: 200,
   },
   header: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    marginBottom: 0,
   },
   streetAddress: {
     marginLeft: theme.spacing.unit,
@@ -29,12 +25,9 @@ const styles = theme => ({
     width: 400,
   },
   selection: {
-    margin: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     width: 200,
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 120,
   },
 });
 
@@ -132,7 +125,7 @@ class BasicInfo extends Component {
             label="Street Address"
             value={this.props.info.streetAddress}
             onChange={this.props.handler('streetAddress')}
-            className={classes.address}
+            className={classes.streetAddress}
             placeholder="Street Address"
             fullWidth
             margin="normal"
