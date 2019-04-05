@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-// import { connect } from 'react-redux';
-// import { login } from './actions/Login'
+import { connect } from 'react-redux';
+import { login } from './actions/LoginActions'
 
 const styles = theme => ({
   button: {
@@ -14,7 +13,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 250,
+    width: 300,
   },
   input: {
     display: 'none',
@@ -24,7 +23,6 @@ const styles = theme => ({
   }
 });
 
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -32,54 +30,63 @@ class Main extends Component {
     this.state = {
       email: '',
       password: '',
-      errors:{},
-      isLoading:false
+      errors:{}
     };
   }
 
-  // onSubmit = (e) => {
-  //   e.preventDefault()
-  //   if (this.isValid()) {
-  //     this.setState({ errors:{}, isLoading: true })
-  //     this.props.login(this.state).then(
-  //       (res) => this.context.router.push('/'),
-  //       (err) => this.setState({ errors: err.data.errors, isLoading:false })
-  //     )
-  //   }
-  // }
+  onClick = (e) => {
+    e.preventDefault()
+    if (this.state.email && this.state.password) {
+      console.log('pushed')
+      this.setState({ errors: {} })
+      this.props.login(this.state).then(
+        // (res) => this.context.router.push('/'),
+        (res) => { 
+          localStorage.setItem('jwtToken',res.data.token)
+        },
+        (err) => this.setState({ errors: "Wrong email or password" })
+      )
+    }
+    
+  }
 
-  // onChange = (e) => {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // }
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state)
+  }
+
   render() {
     const { classes } = this.props;
     const { errors, email, password, isLoading } = this.state
+
     return (
       <div className="Login">
         <form className={classes.container} noValidate autoComplete="off">
-          <TextField
-            id="standard-email-input"
-            label="email"
-            className={classes.textField}
-            value={email}
-            error={errors.email}
-            onChange={this.onChange}
-            margin="normal"
-          />
-
-          <TextField
-            id="standard-password-input"
-            label="Password"
-            className={classes.textField}
-            type="password"
-            autoComplete="current-password"
-            margin="normal"
-            onChange={this.onChange}
-            value={password}
-            error={errors.password}
-          />
-
-          <Button variant="contained" component="span" className={classes.button} disabled={isLoading}>
+            <div>
+              <TextField
+                id="standard-email-input"
+                label="email"
+                className={classes.textField}
+                value={this.state.email}
+                onChange={this.onChange}
+                margin="normal"
+                name="email"
+              />
+            </div>
+            
+            <div>
+            <TextField
+              id="standard-password-input"
+              label="Password"
+              className={classes.textField}
+              type="password"
+              margin="normal"
+              onChange={this.onChange}
+              value={this.state.password}
+              name="password"
+            />
+            </div>
+          <Button variant="contained" component="span" className= {classes.button} disabled={isLoading} onClick={this.onClick}>
             Login
           </Button>
         </form>
@@ -90,12 +97,11 @@ class Main extends Component {
 
 Main.propTypes = {
   classes: PropTypes.object.isRequired,
-  // login: React.PropTypes.func.isRequired
+  login: PropTypes.func.isRequired
 };
 
-// // Main.contextTypes = {
-// //   router: React.PropTypes.object.isRequired
-// }
+Main.contextTypes = {
+  router: PropTypes.object.isRequired
+}
 
-// export default connect(null, { login }) (withStyles(styles)(Main));
-export default withStyles(styles)(Main)
+export default connect(null, { login }) (withStyles(styles)(Main))

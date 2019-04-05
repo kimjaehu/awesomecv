@@ -10,9 +10,9 @@ class ApplicationController < ActionController::API
   end
 
   def authorize_request
-    header = params[:auth][:token]
-    # header = request.headers['Authorization']
-    # header = header.split(' ').last if header
+    # header = params[:auth][:token]
+    header = request.headers['jwtToken']
+    header = header.split(' ').last if header
     begin
       @user = User.find(params[:auth][:user_id])
       @decoded = JsonWebToken.decode(header)

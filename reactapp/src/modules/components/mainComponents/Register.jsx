@@ -13,7 +13,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 250,
+    width: 300,
   },
   input: {
     display: 'none',
@@ -31,7 +31,7 @@ class Main extends Component {
     this.state = {
       email: '',
       password: '',
-      passwordConfirmation:'',
+      password_confirmation:'',
       errors:{}
     };
   }
@@ -39,12 +39,15 @@ class Main extends Component {
   onClick = (e) => {
     this.setState({ errors: {} })
     e.preventDefault()
-    this.props.userRegistrationRequest(this.state).then(
-      () => {},
-      ( {err} ) => this.setState({ errors: err })
-    )
 
+    if (this.state.email && this.state.password && this.state.password_confirmation && this.state.password === this.state.password_confirmation) {
+      this.props.userRegistrationRequest(this.state).then(
+        () => {},
+        ( {err} ) => this.setState({ errors: err })
+      )  
+    }
 
+    
   }
 
   onChange = (e) => {
@@ -98,9 +101,8 @@ class Main extends Component {
               type="password"
               margin="normal"
               onChange={this.onChange}
-              onBlur={this.onBlur}
-              value={this.state.passwordConfirmation}
-              name="passwordConfirmation"
+              value={this.state.password_confirmation}
+              name="password_confirmation"
             />
             </div>
               
@@ -120,8 +122,8 @@ Main.propTypes = {
   userRegistrationRequest: PropTypes.func.isRequired
 };
 
-// // Main.contextTypes = {
-// //   router: React.PropTypes.object.isRequired
+// Main.contextTypes = {
+//   router: React.PropTypes.object.isRequired
 // }
 
 // export default connect(null, { login }) (withStyles(styles)(Main));

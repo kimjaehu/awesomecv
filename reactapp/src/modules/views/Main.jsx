@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Login from '../components/mainComponents/Login'
@@ -58,14 +57,13 @@ class Main extends React.Component {
             <Grid
                 container
                 spacing={0}
-                direction="column"
                 alignItems="center"
                 justify="center"
                 style={{ minHeight: '100vh' }}
               >
                 
                 <Grid item xs={3}>
-                <h1>Welcome. It's Awesome</h1>
+                <Typography component="h2" variant="h2" align="center" color="primary" gutterBottom>Welcome. It's Awesome</Typography>
                 <Paper className={classes.root} elevation={1}>
                   <AppBar position="static" color="default">
                     <Tabs
@@ -74,6 +72,7 @@ class Main extends React.Component {
                       indicatorColor="primary"
                       textColor="primary"
                       variant="fullWidth"
+                      direction="row"
                     >
                       <Tab label="Log In" />
                       <Tab label="Register" />

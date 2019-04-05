@@ -4,7 +4,7 @@
 module Api::V1
   class UsersController < ApplicationController
     # before_action :find_user, except: %i[update destroy show]
-    before_action :authorize_request, except: [:create, :index]
+    before_action :authorize_request, except: [:create]
 
     # GET /users
     def index
