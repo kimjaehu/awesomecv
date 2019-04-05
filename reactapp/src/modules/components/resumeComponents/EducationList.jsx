@@ -6,8 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    maxWidth: 924,
+    margin: 'auto',
+    overflow: 'hidden',
     flexDirection: "column"
   },
   textField: {

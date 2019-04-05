@@ -16,13 +16,15 @@ import axios from 'axios';
 
 
   const styles = theme => ({
-    root: {
-      paddingTop: theme.spacing.unit * 2,
-      paddingBottom: theme.spacing.unit * 2,
-    },
     button: {
       marginTop:20,
       margin: theme.spacing.unit,
+    },
+    paper: {
+      overflow: 'hidden',
+    },
+    container: {
+      flexWrap: 'wrap',
     },
   });
 
@@ -142,7 +144,7 @@ class Resume extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Paper className={classes.root} elevation={1}>
+        <Paper className={classes.paper} elevation={1}>
           <BasicInfo info={this.state.basic} handler={this.basicHandler}/>
           <Divider />
           <Summary sum={this.state.summary} handler={this.summaryHandler}/>
@@ -158,7 +160,6 @@ class Resume extends Component {
           <Divider />
           <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
           <Divider />
-
           <Button className={classes.button} variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
         </Paper>
       </div>

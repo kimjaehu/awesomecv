@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -26,15 +26,17 @@ import PersonIcon from '@material-ui/icons/Person';
 // Views Pages
 
 import Users from './Users';
-import Map from '../components/resumeComponents/ApplicantMap';
-import Content from '../components/recruiterComponents/AdminJobFlow';
-import Navigator from '../components/recruiterComponents/DrawerList';
+import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
+import DrawerList from '../components/recruiterComponents/DrawerList';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
     display: 'flex',
+    margin: 'auto',
+    overflow: 'hidden',
+    flexDirection: "column"
   },
   button: {
     margin: theme.spacing.unit,
@@ -97,11 +99,11 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    marginLeft: drawerWidth,
   },
 });
 
-class PersistentDrawerLeft extends React.Component {
+class Navbar extends React.Component {
   state = {
     open: true,
   };
@@ -175,7 +177,7 @@ class PersistentDrawerLeft extends React.Component {
           </div>
           <Divider />
 
-          <Navigator/>
+          <DrawerList/>
 
         </Drawer>
         <main
@@ -183,16 +185,14 @@ class PersistentDrawerLeft extends React.Component {
         [classes.contentShift]: open,
         })}
         >
-          <div className={classes.drawerSpace} />
           <main className={classes.content}>
 
            <div className={classes.toolbar} />
-          <Switch>
-                <Route path="/admin" component={Content} />
-                <Route path="/users" component={Users} />
-                <Route path="/map" component={Map} />
-          </Switch>
-
+              <Router>
+                <Route path="/users/admin" component={AdminJobFlow} />
+                <Route path="/users/applicant" component={Users} />
+              </Router>
+                
           </main>
         </main>
       </div>
@@ -202,9 +202,9 @@ class PersistentDrawerLeft extends React.Component {
   }
 }
 
-PersistentDrawerLeft.propTypes = {
+Navbar.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
+export default withStyles(styles, { withTheme: true })(Navbar);

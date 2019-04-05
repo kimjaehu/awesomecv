@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import withRoot from './modules/withRoot';
-
-import PersistentDrawerLeft from './modules/views/Navbar.jsx';
+import Main from './modules/views/Main'
+import Navbar from './modules/views/Navbar.jsx';
 
 class App extends Component {
 
@@ -14,7 +14,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-          <PersistentDrawerLeft />
+          <Route path="/" exact component={Main} />
+          <Route path="/users/" component={Navbar} /> 
       </Router>
     );
   }

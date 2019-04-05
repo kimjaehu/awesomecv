@@ -9,8 +9,7 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: "column",
-    width: "auto",
+    flexDirection: "column"
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -101,7 +100,7 @@ class Education extends Component {
             onChange={ this.educationValueHandler('schoolFrom') }
             value={this.state.schoolFrom}
             id="filled-full-width"
-            label="From"
+            label="to"
             type="date"
             className={classes.fromTo}
             placeholder="yyyy"
@@ -117,7 +116,7 @@ class Education extends Component {
             onChange={ this.educationValueHandler('schoolTo') }
             value={this.state.schoolTo}
             id="filled-full-width"
-            label="From"
+            label="To"
             className={classes.fromTo}
             type="date"
             placeholder="yyyy"
