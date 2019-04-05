@@ -31,66 +31,85 @@ class Main extends Component {
     this.state = {
       email: '',
       password: '',
-      passwordConfirmation:''
+      passwordConfirmation:'',
+      errors:{}
     };
   }
 
   onClick = (e) => {
+    this.setState({ errors: {} })
     e.preventDefault()
-    // axios.post('api/v1/users', { user: this.state })
-    this.props.userRegistrationRequest(this.state)
+    this.props.userRegistrationRequest(this.state).then(
+      () => {},
+      ( {err} ) => this.setState({ errors: err })
+    )
+
+
   }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     console.log(this.state)
   }
-  
+
+  // onBlur = (e) => {
+  //   if (this.state.password !== this.state.passwordConfirmation) {
+  //     this.setState({ errors: { passwordConfirmation: "Password not matching" } })
+  //   }
+  // }
+
   render() {
+    const { errors } = this.state;
     const { classes } = this.props;
     return (
       <div className="Login">
-      <Paper className={classes.paper} elevation={1}>
-        <form className={classes.container}  noValidate autoComplete="off">
-          <TextField
-            id="standard-email-input"
-            label="email"
-            className={classes.textField}
-            value={this.state.email}
-            onChange={this.onChange}
-            margin="normal"
-            name="email"
-          />
+          <form className={classes.container}  noValidate autoComplete="off">
+            <div>
+              <TextField
+                id="standard-email-input"
+                label="email"
+                className={classes.textField}
+                value={this.state.email}
+                onChange={this.onChange}
+                margin="normal"
+                name="email"
+              />
+              
+            </div>
+            
+            <div>
+            <TextField
+              id="standard-password-input"
+              label="Password"
+              className={classes.textField}
+              type="password"
+              margin="normal"
+              onChange={this.onChange}
+              value={this.state.password}
+              name="password"
+            />
+            </div>
 
-          <TextField
-            id="standard-password-input"
-            label="Password"
-            className={classes.textField}
-            type="password"
-            margin="normal"
-            onChange={this.onChange}
-            value={this.state.password}
-            name="password"
-          />
-          <TextField
-            id="standard-password-input"
-            label="Re-type Password"
-            className={classes.textField}
-            type="password"
-            margin="normal"
-            onChange={this.onChange}
-            value={this.state.passwordConfirmation}
-            name="passwordConfirmation"
-          />
-          <div>
-            <Button variant="contained" className={classes.button} onClick={this.onClick} >
-              register
-            </Button>
-          </div>
-          
-        </form>
-        
-        </Paper>
+            <div>
+            <TextField
+              id="standard-password-input"
+              label="Re-type Password"
+              className={classes.textField}
+              type="password"
+              margin="normal"
+              onChange={this.onChange}
+              onBlur={this.onBlur}
+              value={this.state.passwordConfirmation}
+              name="passwordConfirmation"
+            />
+            </div>
+              
+            <div>
+              <Button variant="contained" className={classes.button} onClick={this.onClick} >
+                register
+              </Button>
+            </div>
+          </form>
       </div>
     );
   }

@@ -56,7 +56,6 @@ class Main extends Component {
     const { errors, email, password, isLoading } = this.state
     return (
       <div className="Login">
-      <Paper className={classes.paper} elevation={1}>
         <form className={classes.container} noValidate autoComplete="off">
           <TextField
             id="standard-email-input"
@@ -84,10 +83,6 @@ class Main extends Component {
             Login
           </Button>
         </form>
-        <div> Don't have an account? &nbsp;
-          <a href="/register">Register</a>  
-        </div>
-        </Paper>
       </div>
     );
   }
