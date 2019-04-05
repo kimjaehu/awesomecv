@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import FilledInput from '@material-ui/core/FilledInput';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -20,15 +18,10 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     width: 300,
   },
-  fromTo: {
+  selection: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 100,
-  },
-  description: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 800,
+    width: 200,
   },
   header: {
     marginLeft: theme.spacing.unit,
@@ -67,7 +60,7 @@ class Skill extends Component {
 
   render() {
     const { classes } = this.props;
-    
+
     const skillSelection = [
       'C#',
       'Elixir',
@@ -96,47 +89,31 @@ class Skill extends Component {
           <h4 className={classes.header}> Skill { this.props.skillVal.id }</h4>
         </article>
 
-        <div>
-        {/* <TextField
-            onChange={ this.skillValueHandler('skillNamen') }
-            value={this.state.skillName}
-            id="filled-full-width"
-            label="Skill"
-            className={classes.textField}
-            placeholder="Skill"
-            fullWidth
-            margin="normal"
-            variant="filled"
-            InputLabelProps={{
-              shrink: true,
-            }}
-        /> */}
+          <div>
+              <Select
+                onChange={ this.skillValueHandler('skillName') }
+                value={this.state.skillName}
+                className={classes.selection}
+                input={<FilledInput name="skill" id="filled-skill" />}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {skillSelection.map((currentValue) => {
+                  console.log(currentValue)
+                  return <MenuItem value={currentValue}>{currentValue}</MenuItem>
+                })}
+              </Select>
 
-        <InputLabel htmlFor="filled-skill">Skill</InputLabel>
-          <Select
-            onChange={ this.skillValueHandler('skillNamen') }
-            value={this.state.skillName}
-            input={<FilledInput name="skill" id="filled-skill" />}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-
-            {skillSelection.map((currentValue) => {
-              console.log(currentValue)
-              return <MenuItem value={currentValue}>{currentValue}</MenuItem>
-            })}
-          </Select>
-
-        <Button
-            variant='contained'
-            color='secondary'
-            className={classes.button}
-            onClick={this.props.skillVal.deleteSkill}
-          >
-          <DeleteIcon className={classes.rightIcon} />
-        </Button>
-        </div>
+            <Button
+                variant='contained'
+                color='secondary'
+                className={classes.button}
+                onClick={this.props.skillVal.deleteSkill}
+              >
+              <DeleteIcon className={classes.rightIcon} />
+            </Button>
+          </div>
         
       </div>
     );

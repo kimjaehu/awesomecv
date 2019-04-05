@@ -9,7 +9,8 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: "column"
+    flexDirection: "column",
+    width: "auto",
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -19,7 +20,7 @@ const styles = theme => ({
   fromTo: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 100,
+    width: 200,
   },
   header: {
     marginLeft: theme.spacing.unit,
@@ -101,6 +102,7 @@ class Education extends Component {
             value={this.state.schoolFrom}
             id="filled-full-width"
             label="From"
+            type="date"
             className={classes.fromTo}
             placeholder="yyyy"
             fullWidth
@@ -117,6 +119,7 @@ class Education extends Component {
             id="filled-full-width"
             label="From"
             className={classes.fromTo}
+            type="date"
             placeholder="yyyy"
             fullWidth
             margin="normal"
@@ -134,7 +137,6 @@ class Education extends Component {
           <DeleteIcon className={classes.rightIcon} />
         </Button>
         </div>
-        
       </div>
     );
   }

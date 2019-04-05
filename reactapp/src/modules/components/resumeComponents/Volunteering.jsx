@@ -19,7 +19,7 @@ const styles = theme => ({
   fromTo: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 100,
+    width: 200,
   },
   description: {
     marginLeft: theme.spacing.unit,
@@ -120,6 +120,7 @@ class Volunteering extends Component {
             value={this.state.volunteeringFrom}
             id="filled-full-width"
             label="From"
+            type="date"
             className={classes.fromTo}
             placeholder="yyyy"
             fullWidth
@@ -135,6 +136,7 @@ class Volunteering extends Component {
             value={this.state.volunteeringTo}
             id="filled-full-width"
             label="To"
+            type="date"
             className={classes.fromTo}
             placeholder="yyyy"
             fullWidth

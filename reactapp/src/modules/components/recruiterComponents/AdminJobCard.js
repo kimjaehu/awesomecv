@@ -20,6 +20,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
+import AdminMap from './AdminMap'
 
 const styles = theme => ({
   card: {
@@ -94,11 +95,9 @@ class RecipeReviewCard extends React.Component {
           title="Shrimp and Chorizo Paella"
           subheader="September 14, 2016"
         />
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
-        />
+        <CardMedia>
+          <AdminMap className="adminMap" />
+        </CardMedia>
         <CardContent>
           <Typography component="p">
             This impressive paella is a perfect party dish and a fun meal to cook together with your
