@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getJwt } from './actions/AuthActions'
 import axios from 'axios';
 import { withRouter } from "react-router";
+import PropTypes from 'prop-types';
+
 
 class Authenticated extends Component {
   constructor(props) {
@@ -37,5 +39,9 @@ class Authenticated extends Component {
     )
   }
 }
+
+Authenticated.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default withRouter(Authenticated)

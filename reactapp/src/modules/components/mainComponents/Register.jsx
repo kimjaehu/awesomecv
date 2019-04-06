@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router';
 // import axios from "axios";
 
 const styles = theme => ({
@@ -43,7 +44,7 @@ class Main extends Component {
       this.props.userRegistrationRequest(this.state).then(
         () => {},
         ( {err} ) => this.setState({ errors: err })
-      )  
+      )
     }
 
     
@@ -117,7 +118,7 @@ class Main extends Component {
 
 Main.propTypes = {
   classes: PropTypes.object.isRequired,
-  userRegistrationRequest: PropTypes.func.isRequired
+  userRegistrationRequest: PropTypes.func.isRequired,
 };
 
 // Main.contextTypes = {
