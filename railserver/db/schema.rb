@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_212836) do
+ActiveRecord::Schema.define(version: 2019_04_06_052148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 2019_03_29_212836) do
     t.index ["user_id"], name: "index_carrers_on_user_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "company_name"
+    t.string "company_description"
+    t.string "number_of_workers"
+    t.bigint "user_id"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_companies_on_job_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
   create_table "educations", force: :cascade do |t|
     t.string "school_name"
     t.string "degree"
@@ -51,6 +63,27 @@ ActiveRecord::Schema.define(version: 2019_03_29_212836) do
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_educations_on_profile_id"
     t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "job_educations", force: :cascade do |t|
+    t.string "education_level"
+    t.string "education_area"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_educations_on_job_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "job_category"
+    t.string "job_title"
+    t.string "job_level"
+    t.string "job_description"
+    t.string "postal_code"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -68,6 +101,15 @@ ActiveRecord::Schema.define(version: 2019_03_29_212836) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "type"
+    t.string "value"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_skills_on_job_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "user_type"
@@ -80,7 +122,12 @@ ActiveRecord::Schema.define(version: 2019_03_29_212836) do
   add_foreign_key "about_mes", "users"
   add_foreign_key "carrers", "profiles"
   add_foreign_key "carrers", "users"
+  add_foreign_key "companies", "jobs"
+  add_foreign_key "companies", "users"
   add_foreign_key "educations", "profiles"
   add_foreign_key "educations", "users"
+  add_foreign_key "job_educations", "jobs"
+  add_foreign_key "jobs", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "skills", "jobs"
 end
