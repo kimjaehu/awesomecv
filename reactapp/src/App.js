@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import withRoot from './modules/withRoot';
-
-import PersistentDrawerLeft from './modules/views/Navbar.jsx';
-
+import Main from './modules/views/Main'
+import Navbar from './modules/views/Navbar.jsx';
+import Authenticated from './modules/components/mainComponents/Authenticated'
+import Users from './modules/views/Users'
 class App extends Component {
 
   state = {
@@ -14,7 +15,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-          <PersistentDrawerLeft />
+        <Authenticated>
+          <Route path="/users" exact component={Users} />
+        </Authenticated>
+          <Route path="/" exact component={Main} />
       </Router>
     );
   }

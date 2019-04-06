@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../../App.css';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import Geocode from "react-geocode";
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
 
@@ -13,6 +14,22 @@ const styles = theme => ({
   },
 })
 
+// set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
+Geocode.setApiKey(GOOGLE_MAP_KEY);
+ 
+// Enable or disable logs. Its optional.
+Geocode.enableDebug();
+
+// Geocode.fromAddress("Eiffel Tower").then(
+//   response => {
+//     const { lat, lng } = response.results[0].geometry.location;
+//     console.log(lat, lng);
+//   },
+//   error => {
+//     console.error(error);
+//   }
+// );
+
 class Map extends Component {
 
   state = {
@@ -20,6 +37,7 @@ class Map extends Component {
     indeedJobs: [{lat: 43.1532, lng: -79.1832},{lat: 43.6352, lng: -79.3862}]
   }
 
+  
   componentDidMount() {
     // this.getAwesomeJobs()
     // this.getIndeedJobs()
@@ -30,6 +48,7 @@ class Map extends Component {
     loadScript(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&callback=initMap`)
     window.initMap = this.initMap
   }
+  
   
   // getAwesomeJobs =() => {
   //   const endPoint = "localhost:3000"
