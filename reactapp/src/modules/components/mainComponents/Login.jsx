@@ -41,6 +41,7 @@ class Main extends Component {
       this.setState({ errors: {} })
       this.props.login(this.state).then(
         (res) => {
+          console.log('login',res)
           localStorage.setItem('jwtToken',res.data.token)
           this.props.history.push('/')},
         // (res) => { 
