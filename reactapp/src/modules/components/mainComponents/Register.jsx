@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 // import axios from "axios";
 
 const styles = theme => ({
@@ -62,7 +61,6 @@ class Main extends Component {
   // }
 
   render() {
-    const { errors } = this.state;
     const { classes } = this.props;
     return (
       <div className="Login">

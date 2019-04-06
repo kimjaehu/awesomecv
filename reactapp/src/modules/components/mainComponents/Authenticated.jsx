@@ -14,14 +14,14 @@ class Authenticated extends Component {
   componentDidMount() {
     const jwt = getJwt()
     if (!jwt) {
-      this.props.history.push('/')
+      // this.props.history.push('/')
     } else {
       axios.get('/api/v1/users', { jwtToken: jwt } )
       .then(res => {
         this.setState({ users:res.data })
       }).catch(err => {
         localStorage.removeItem('jwtToken')
-        this.props.history.push('/')
+        // this.props.history.push('/')
       })
     }
   }

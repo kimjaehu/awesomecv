@@ -59,12 +59,12 @@ class Main extends React.Component {
                 spacing={0}
                 alignItems="center"
                 justify="center"
-                style={{ minHeight: '100vh' }}
+                style={{ minHeight: '100vh'}}
               >
-                
-                <Grid item xs={3}>
+             
+                <Grid item xs={10} sm={4}>
                 <Typography component="h2" variant="h2" align="center" color="primary" gutterBottom>Welcome. It's Awesome</Typography>
-                <Paper className={classes.root} elevation={1}>
+                <Paper className={classes.paper} elevation={1}>
                   <AppBar position="static" color="default">
                     <Tabs
                       value={this.state.value}
@@ -94,6 +94,7 @@ class Main extends React.Component {
 
                   
               </Grid>   
+          
             </Grid>
           
           

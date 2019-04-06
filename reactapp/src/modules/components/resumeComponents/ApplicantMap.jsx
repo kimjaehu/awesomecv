@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import '../../../App.css';
-import TextField from '@material-ui/core/TextField';
-import axios from 'axios';
 import Geocode from "react-geocode";
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
-
-const styles = theme => ({
-  textField: {
-    margin: theme.spacing.unit,
-    width: "auto",
-    height: "auto",
-  },
-})
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
 Geocode.setApiKey(GOOGLE_MAP_KEY);

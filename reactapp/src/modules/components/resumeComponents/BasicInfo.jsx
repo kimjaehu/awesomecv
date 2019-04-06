@@ -31,21 +31,21 @@ const styles = theme => ({
   },
 });
 
-const provinceSelection = [
-  'BC',
-  'AB',
-  'SK',
-  'MB',
-  'ON',
-  'QC',
-  'NB',
-  'PE',
-  'NS',
-  'NL',
-  'YT',
-  'NT',
-  'NU'
-]
+// const provinceSelection = [
+//   'BC',
+//   'AB',
+//   'SK',
+//   'MB',
+//   'ON',
+//   'QC',
+//   'NB',
+//   'PE',
+//   'NS',
+//   'NL',
+//   'YT',
+//   'NT',
+//   'NU'
+// ]
 
 class BasicInfo extends Component {
 
