@@ -33,6 +33,10 @@ JobEducation.destroy_all
 Job.destroy_all
 User.destroy_all
 
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
 ## USER
 
 puts "Creating new Users ..."

@@ -1,23 +1,20 @@
-# class Api::V1::UsersController < ApplicationController
-# end
-
 module Api::V1
   class UsersController < ApplicationController
     # before_action :find_user, except: %i[update destroy show]
     before_action :authorize_request, except: [:create]
 
-    # GET /users
+    # GET    /api/v1/users
     def index
       @users = User.all
       render json: @users, status: :ok
     end
 
-    # GET /users/{username}
+    # GET    /api/v1/users/:id(.:format)
     def show
       render json: @user, status: :ok
     end
 
-    # POST /users
+    # POST /api/v1/users(.:format)
     def create
       @user = User.new(user_params)
 
