@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { login } from './actions/LoginActions'
+import { withRouter } from 'react-router-dom'
 
 const styles = theme => ({
   button: {
@@ -37,13 +38,14 @@ class Main extends Component {
   onClick = (e) => {
     e.preventDefault()
     if (this.state.email && this.state.password) {
-      console.log('pushed')
       this.setState({ errors: {} })
       this.props.login(this.state).then(
-        // (res) => this.context.router.push('/'),
-        (res) => { 
+        (res) => {
           localStorage.setItem('jwtToken',res.data.token)
-        },
+          this.props.history.push('/')},
+        // (res) => { 
+        //   
+        // },
         (err) => this.setState({ errors: "Wrong email or password" })
       )
     }
@@ -104,4 +106,4 @@ Main.contextTypes = {
   router: PropTypes.object.isRequired
 }
 
-export default connect(null, { login }) (withStyles(styles)(Main))
+export default connect(null, { login }) (withStyles(styles)(withRouter(Main)))

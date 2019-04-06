@@ -16,9 +16,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/* <Authenticated> */}
+        <Authenticated>
           <Route path="/users" exact component={Navbar} />
-        {/* </Authenticated> */}
+        </Authenticated>
           <Route path="/" exact component={Main} />
       </Router>
     );
