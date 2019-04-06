@@ -57,7 +57,7 @@ class Main extends Component {
 
   render() {
     const { classes } = this.props;
-    const { errors, email, password, isLoading } = this.state
+    const { isLoading } = this.state
 
     return (
       <div className="Login">

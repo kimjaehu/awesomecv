@@ -11,8 +11,6 @@ import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import LinkedInTest from '../oauth/LinkedInTest';
-import axios from 'axios';
 
 
   const styles = theme => ({
@@ -160,7 +158,7 @@ class Resume extends Component {
           <Divider />
           <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
           <Divider />
-          <Button className={classes.button} variant="outlined" color="submit" onClick={this.onClickHandler}>Submit</Button>
+          <Button className={classes.button} variant="outlined" color="default" onClick={this.onClickHandler}>Submit</Button>
         </Paper>
       </div>
     );
