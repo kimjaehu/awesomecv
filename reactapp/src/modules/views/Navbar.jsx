@@ -187,10 +187,10 @@ class Navbar extends React.Component {
           <main className={classes.content}>
 
            <div className={classes.toolbar} />
-              <Router>
-                <Route path="/users/admin" component={AdminJobFlow} />
-                <Route path="/users/applicant" component={Users} />
-              </Router>
+              {/* <Router> */}
+                {/* <Route path="/users/admin" component={AdminJobFlow} /> */}
+                <Users />
+              {/* </Router> */}
                 
           </main>
         </main>

@@ -4,6 +4,8 @@ import withRoot from './modules/withRoot';
 import Main from './modules/views/Main'
 import Authenticated from './modules/components/mainComponents/Authenticated'
 import Users from './modules/views/Users'
+import Navbar from './modules/views/Navbar'
+
 class App extends Component {
 
   state = {
@@ -15,7 +17,7 @@ class App extends Component {
     return (
       <Router>
         <Authenticated>
-          <Route path="/users" exact component={Users} />
+          <Route path="/users" exact component={Navbar} />
         </Authenticated>
           <Route path="/" exact component={Main} />
       </Router>
