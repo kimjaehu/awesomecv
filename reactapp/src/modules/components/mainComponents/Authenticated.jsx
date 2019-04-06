@@ -14,8 +14,10 @@ class Authenticated extends Component {
   componentDidMount() {
     const jwt = getJwt()
     if (!jwt) {
+      console.log('dont have jwt')
       // this.props.history.push('/')
     } else {
+      console.log('have jwt and getting info')
       axios.get('/api/v1/users', { jwtToken: jwt } )
       .then(res => {
         this.setState({ users:res.data })
