@@ -15,7 +15,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
-import AdminMap from './AdminMap'
+import AdminMap from './AdminMap.jsx'
 
 const styles = theme => ({
   card: {
@@ -91,7 +91,7 @@ class RecipeReviewCard extends React.Component {
           subheader="September 14, 2016"
         />
         <CardMedia>
-          <AdminMap className="adminMap" />
+          {/*<AdminMap className="adminMap" />*/}
         </CardMedia>
         <CardContent>
           <Typography component="p">

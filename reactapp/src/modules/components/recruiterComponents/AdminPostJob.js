@@ -14,8 +14,8 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Divider from '@material-ui/core/Divider';
-import CheckboxesGroup from '../forms/JobRequirementsForm'
-import OutlinedTextFields from '../forms/JobCompanyForm'
+import CheckboxesGroup from '../../forms/JobRequirementsForm'
+import OutlinedTextFields from '../../forms/JobCompanyForm'
 
 const styles = theme => ({
   paper: {

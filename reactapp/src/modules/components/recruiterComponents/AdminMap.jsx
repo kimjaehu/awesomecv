@@ -18,7 +18,7 @@
 //     loadScript(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&callback=initMap`)
 //     window.initMap = this.initMap
 //   }
-  
+
 //   // getJobs =() => {
 //   //   const endPoint = "localhost:3000"
 
@@ -42,7 +42,7 @@
 //       zoom: 15
 //     });
 
-//     // create an infowindow 
+//     // create an infowindow
 //     let infowindow = new window.google.maps.InfoWindow();
 
 //       // display markers

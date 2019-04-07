@@ -5,6 +5,9 @@ import Main from './modules/views/Main'
 import Authenticated from './modules/components/mainComponents/Authenticated'
 import Users from './modules/views/Users'
 import Navbar from './modules/views/Navbar'
+import RecruiterAppPostJob from './modules/views/RecruiterAppPostJob'
+import RecruiterAppJobs from './modules/views/RecruiterAppJobs'
+import Home from './modules/views/Home'
 
 class App extends Component {
 
@@ -16,10 +19,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Authenticated>
-          <Route path="/users" exact component={Navbar} />
-        </Authenticated>
-          <Route path="/" exact component={Main} />
+        <Route path="/" exact component={Home} />
+        <Route path="/recruiter/recruiter_id/find" exact component={Home} />
+        <Route path="/recruiter/recruiter_id/post_job" exact component={RecruiterAppPostJob} />
+        <Route path="/recruiter/recruiter_id/jobs" exact component={RecruiterAppJobs} />
       </Router>
     );
   }

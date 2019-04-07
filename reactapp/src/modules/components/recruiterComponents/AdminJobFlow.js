@@ -36,10 +36,8 @@ function Content(props) {
     <Paper className={classes.paper}>
 
         <Grid container>
-          <RecipeReviewCard />
-          <RecipeReviewCard />
-          <RecipeReviewCard />
-          <RecipeReviewCard />
+         <RecipeReviewCard />
+
         </Grid>
 
     </Paper>
