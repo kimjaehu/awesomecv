@@ -33,7 +33,7 @@
 }
 
 #map {
-  height: 80vh;
+  height: 70vh;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -43,5 +43,5 @@ html, body {
 }
 
 .adminMap {
-  height: 40vh;
+  height: 60vh;
 }

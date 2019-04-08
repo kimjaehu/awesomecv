@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import SwipeableViews from 'react-swipeable-views';
 
 // Material-Ui Tags
 import { withStyles } from '@material-ui/core/styles';
@@ -15,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 
 // Material-Ui Icon
 import MenuIcon from '@material-ui/icons/Menu';
@@ -32,16 +34,17 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    margin: 'auto',
-    overflow: 'hidden',
-    flexDirection: "column"
+    flexGrow: 1,
   },
   button: {
     margin: theme.spacing.unit,
   },
   input: {
     display: 'none',
+  },
+  logout:{
+
+
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -115,6 +118,11 @@ class Navbar extends React.Component {
     this.setState({ open: false });
   };
 
+  handleLogout = () => {
+    localStorage.removeItem('jwtToken')
+    this.props.history.push('/')
+  }
+
   render() {
     const { classes, theme } = this.props;
     const { open } = this.state;
@@ -140,6 +148,7 @@ class Navbar extends React.Component {
             <Typography variant="h6" color="inherit" noWrap>
               AwesomeCV
             </Typography>
+            <Button color="inherit" className={classes.logout} onClick={this.handleLogout}>Logout</Button>
           </Toolbar>
         </AppBar>
 
@@ -188,7 +197,7 @@ class Navbar extends React.Component {
 
            <div className={classes.toolbar} />
               {/* <Router> */}
-                {/* <Route path="/users/admin" component={AdminJobFlow} /> */}
+                {/* <Route path="/users/:id" component={Users} /> */}
                 <Users />
               {/* </Router> */}
                 
@@ -196,8 +205,6 @@ class Navbar extends React.Component {
         </main>
       </div>
     );
-
-
   }
 }
 

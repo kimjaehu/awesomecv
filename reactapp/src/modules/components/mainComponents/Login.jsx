@@ -42,11 +42,11 @@ class Main extends Component {
       this.props.login(this.state).then(
         (res) => {
           console.log('login',res)
+          this.setState({ user: res.data })
           localStorage.setItem('jwtToken',res.data.token)
-          this.props.history.push('/')},
-        // (res) => { 
-        //   
-        // },
+          console.log('what is this.props',this.props)
+          this.props.history.push(`/users/${res.data.user.id}`)
+        },
         (err) => this.setState({ errors: "Wrong email or password" })
       )
     }
@@ -89,9 +89,13 @@ class Main extends Component {
               name="password"
             />
             </div>
+
+
+            
           <Button variant="contained" component="span" className= {classes.button} disabled={isLoading} onClick={this.onClick}>
             Login
           </Button>
+          {/* {this.state.errors && <span>error</span>} */}
         </form>
       </div>
     );

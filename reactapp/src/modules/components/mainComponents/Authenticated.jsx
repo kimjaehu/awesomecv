@@ -16,19 +16,19 @@ class Authenticated extends Component {
   componentDidMount() {
     const jwt = getJwt()
     if (!jwt) {
-      console.log('dont have jwt')
       this.props.history.push('/')
     } else {
-      console.log(jwt)
-      axios.get('/api/v1/users', { headers: {jwtToken: jwt} } )
-      .then(res => {
-        console.log('this is after getting res',res.data)
-        this.setState({ users:res.data })
-      }).catch(err => {
-        localStorage.removeItem('jwtToken')
-        this.props.history.push('/')
-      })
+      axios.get('/api/v1/users/', { headers: {jwtToken: jwt} } )
+    .then(res => {
+      console.log('success',res)
+      this.setState({ users:res.data })
+      this.props.history.push(`/users/:id`)
+    }).catch(err => {
+      localStorage.removeItem('jwtToken')
+      this.props.history.push('/')
+    })
     }
+    
   }
  
   render() {

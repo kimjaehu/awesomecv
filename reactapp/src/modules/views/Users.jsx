@@ -64,10 +64,10 @@ class Users extends Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-          <Resume />
+            <Resume />
           </TabContainer>
           <TabContainer dir={theme.direction}>
-          <ApplicantMap />
+            <ApplicantMap />
           </TabContainer>
         </SwipeableViews>
       </div>

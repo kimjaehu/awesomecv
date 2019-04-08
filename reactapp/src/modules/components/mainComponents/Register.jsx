@@ -4,6 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router';
+import { Redirect } from 'react-router'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import axios from "axios";
 
 const styles = theme => ({
@@ -20,7 +24,16 @@ const styles = theme => ({
   },
   paper:{
     margin: theme.spacing.unit,
-  }
+  },
+  formControl: {
+    margin: theme.spacing.unit * 3,
+  },
+  group: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
+  root: {
+    display: 'flex',
+  },
 });
 
 
@@ -32,7 +45,8 @@ class Main extends Component {
       email: '',
       password: '',
       password_confirmation:'',
-      errors:{}
+      user_type: '',
+      errors:{},
     };
   }
 
@@ -52,7 +66,6 @@ class Main extends Component {
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state)
   }
 
   // onBlur = (e) => {
@@ -63,6 +76,9 @@ class Main extends Component {
 
   render() {
     const { classes } = this.props;
+    
+    // return <Redirect to='/users' />
+
     return (
       <div className="Login">
           <form className={classes.container}  noValidate autoComplete="off">
@@ -104,6 +120,18 @@ class Main extends Component {
               name="password_confirmation"
             />
             </div>
+
+            <RadioGroup
+              aria-label="user_type"
+              name="user_type"
+              className={classes.group}
+              value={this.state.user_type}
+              onChange={this.onChange}
+            >
+              <FormControlLabel value="Candidate" control={<Radio />} label="Candidate" />
+              <FormControlLabel value="Recruiter" control={<Radio />} label="Recruiter" />
+              />
+            </RadioGroup>
               
             <div>
               <Button variant="contained" className={classes.button} onClick={this.onClick} >

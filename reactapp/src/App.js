@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <Router>
         <Authenticated>
-          <Route path="/users" exact component={Navbar} />
+          <Route path="/users/:id" exact component={Navbar} />
         </Authenticated>
           <Route path="/" exact component={Main} />
       </Router>

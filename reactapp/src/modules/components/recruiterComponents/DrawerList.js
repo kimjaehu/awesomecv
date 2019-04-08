@@ -19,25 +19,22 @@ import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 import PersonIcon from '@material-ui/icons/Person';
+import Book from '@material-ui/icons/Book';
+import FindInPage from '@material-ui/icons/FindInPage';
+import Error from '@material-ui/icons/Error';
 
 const categories = [
   {
-    id: 'Develop',
+    id: 'Applicant',
     children: [
-      { id: 'Authentication', icon: <PeopleIcon color="secondary"/>, active: true },
-      { id: 'Database', icon: <DnsRoundedIcon color="secondary"/> },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon color="secondary"/> },
-      { id: 'Hosting', icon: <PublicIcon color="secondary"/> },
-      { id: 'Functions', icon: <SettingsEthernetIcon color="secondary"/> },
-      { id: 'ML Kit', icon: <SettingsInputComponentIcon color="secondary"/> },
+      { id: 'Add a Resume', icon: <Book color="secondary"/>, },
+      { id: 'Find a Job', icon: <FindInPage color="secondary"/> },
     ],
   },
   {
-    id: 'Quality',
+    id: 'Logout',
     children: [
-      { id: 'Analytics', icon: <SettingsIcon color="secondary"/> },
-      { id: 'Performance', icon: <TimerIcon color="secondary"/> },
-      { id: 'Test Lab', icon: <PhonelinkSetupIcon color="secondary"/> },
+      { id: 'Logout', icon: <Error color="secondary"/> },
     ],
   },
 ];

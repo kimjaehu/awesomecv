@@ -158,7 +158,7 @@ class Resume extends Component {
           <Divider />
           <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
           <Divider />
-          <Button className={classes.button} variant="outlined" color="default" onClick={this.onClickHandler}>Submit</Button>
+          <Button className={classes.button} variant="outlined" color="default" onClick={this.onClickHandler}>SAVE MY RESUME</Button>
         </Paper>
       </div>
     );
