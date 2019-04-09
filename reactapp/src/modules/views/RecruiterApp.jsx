@@ -6,6 +6,7 @@ import axios from 'axios';
 
 // Material-Ui Tags
 import { withStyles } from '@material-ui/core/styles';
+// import SwipeableViews from 'react-swipeable-views';
 
 // Material-Ui Icon
 
@@ -65,16 +66,16 @@ class RecruiterApp extends React.Component {
     this.setState({ open: false });
   };
 
-  componentDidMount() {
-    axios.get('http://localhost:3000/api/v1/users/1/jobs')
-      .then(response => {
-          console.log(response)
-          this.setState({
-              recruiterData: response.data
-          })
-      })
-      .catch(error => console.log(error))
-  }
+  // componentDidMount() {
+  //   axios.get('http://localhost:3000/api/v1/users/1/jobs')
+  //     .then(response => {
+  //         console.log(response)
+  //         this.setState({
+  //             recruiterData: response.data
+  //         })
+  //     })
+  //     .catch(error => console.log(error))
+  // }
 
   render() {
     const { classes, theme } = this.props;
@@ -93,8 +94,8 @@ class RecruiterApp extends React.Component {
           className={classNames(classes.content, {[classes.contentShift]: this.state.open,})}
         >
 
+                  <AdminJobFlow />
 
-            <AdminPostJob recruiterData={this.state.recruiterData}/>
 
 
         </main>

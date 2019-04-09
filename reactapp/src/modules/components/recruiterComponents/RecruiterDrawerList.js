@@ -24,7 +24,7 @@ const categories = [
   {
     id: 'RECRUITER',
     children: [
-      { id: 'Post Job', icon: <PeopleIcon color="secondary"/>, active: true },
+      { id: 'Post Job', icon: <PeopleIcon color="secondary"/> },
       { id: 'Find Candidates', icon: <DnsRoundedIcon color="secondary"/> },
       { id: 'Job Board', icon: <PermMediaOutlinedIcon color="secondary"/> }
     ],
