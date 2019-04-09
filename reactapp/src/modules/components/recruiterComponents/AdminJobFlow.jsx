@@ -38,7 +38,7 @@ class Content extends React.Component {
     }
 
   componentDidMount(){
-    axios.get('http://localhost:3000/api/v1/users/1/jobs')
+    axios.get('http://localhost:3000/api/v1/users/3/jobs')
     .then(response => {
       this.setState({ recruiterData: response.data });
       // console.log('TESTE')

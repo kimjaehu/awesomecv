@@ -3,9 +3,9 @@ module Api::V1
 
     # GET /api/v1/users/:user_id/jobs
     def index
-      # @job = Job.find_by(:user_id => params[:user_id])
-      @job = Job.all
-      @resume = @job.to_json({:include => [:job_educations, :skills, :company]})
+      @job = Job.find_by(:user_id => params[:user_id])
+      # @job = Job.all
+      @resume = @job.to_json({:include => [:job_educations, :skills, :company, :applicants]})
 
       render json: @resume, status: :created
     end

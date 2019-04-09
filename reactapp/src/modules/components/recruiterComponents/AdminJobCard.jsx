@@ -57,6 +57,7 @@ class RecipeReviewCard extends React.Component {
     const { classes } = this.props;
     const jobData = this.props.jobData
     const id = jobData.id
+    const applicants = jobData.applicants? Object.keys(jobData.applicants).length:0
     const job_title = jobData.job_title
     const job_description = jobData.job_description
     const job_created_at = jobData.job_created_at
@@ -72,7 +73,7 @@ class RecipeReviewCard extends React.Component {
           }
           action={
             <IconButton aria-label="Cart">
-              <Badge badgeContent={4} color="primary" classes={{ badge: classes.badge }}>
+              <Badge badgeContent={applicants} color="primary" classes={{ badge: classes.badge }}>
                 <PersonIcon />
               </Badge>
             </IconButton>
