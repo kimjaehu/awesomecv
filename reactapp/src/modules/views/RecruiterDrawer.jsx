@@ -21,7 +21,7 @@ import PersonIcon from '@material-ui/icons/Person';
 // Views Pages
 import Users from './Users';
 import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
-import DrawerList from '../components/recruiterComponents/DrawerList';
+import RecruiterDrawerList from '../components/recruiterComponents/RecruiterDrawerList';
 
 const drawerWidth = 240;
 
@@ -84,7 +84,7 @@ class RecruiterDrawer extends React.Component {
 
         </div>
         <Divider />
-        <DrawerList/>
+        <RecruiterDrawerList />
       </Drawer>
 
     );

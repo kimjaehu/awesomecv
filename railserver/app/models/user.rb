@@ -10,5 +10,6 @@ class User < ApplicationRecord
 
   has_many :educations
   has_many :carrers
+  has_many :applicants
 
 end

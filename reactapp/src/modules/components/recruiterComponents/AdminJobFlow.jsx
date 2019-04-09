@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import RecipeReviewCard from './AdminJobCard.jsx'
-
+import axios from 'axios';
 
 const styles = theme => ({
   paper: {
@@ -31,27 +31,72 @@ const styles = theme => ({
 });
 
 class Content extends React.Component {
-render() {
-  const { classes } = this.props;
-  const jobData = this.props.recruiterData
 
-  return (
-    <Paper className={classes.paper}>
+  constructor(props) {
+      super(props);
+      this.state = {recruiterData: []};
+    }
 
-        <Grid container>
-        {jobData && <RecipeReviewCard jobData={jobData}/>}
+  componentDidMount(){
+    axios.get('http://localhost:3000/api/v1/users/3/jobs')
+    .then(response => {
+      this.setState({ recruiterData: response.data });
+      // console.log('TESTE')
+      // console.log(this.state.recruiterData)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
+  tabRow(){
+
+    if (this.state.recruiterData.length) {
+      return this.state.recruiterData.map(function(object, i){
+            return <RecipeReviewCard jobData={object} />;
+        });
+
+    } else {
+      return <RecipeReviewCard jobData={this.state.recruiterData} />;
+    }
+
+    // this.state.recruiterData.forEach( function(job, index) {
+    //   console.log(job)
+    //    return <RecipeReviewCard jobData={job} />;
+    //  });
+    // console.log(this.state.recruiterData.length)
+    // return <RecipeReviewCard jobData={this.state.recruiterData} />;
+    //     return this.state.recruiterData.map(function(object, i){
+    //         return <RecipeReviewCard jobData={object} />;
+    //     });
+  }
 
 
 
+  render() {
+    const { classes } = this.props;
 
-        </Grid>
+    return (
+      <Paper className={classes.paper}>
 
-    </Paper>
-  );
-}
+          <Grid container>
+
+          {this.tabRow()}
+
+
+
+          </Grid>
+
+      </Paper>
+    );
+  }
 }
 Content.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Content);
+
+
+
+

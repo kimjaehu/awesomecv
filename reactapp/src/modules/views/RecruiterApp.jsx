@@ -6,15 +6,17 @@ import axios from 'axios';
 
 // Material-Ui Tags
 import { withStyles } from '@material-ui/core/styles';
+// import SwipeableViews from 'react-swipeable-views';
 
 // Material-Ui Icon
 
 // Views Pages
 import Users from './Users';
 import NavBar from './NavBarTeste';
-import Drawler from './DrawlerTeste';
+import RecruiterDrawer from './RecruiterDrawer';
 import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
-import DrawerList from '../components/recruiterComponents/DrawerList';
+import AdminPostJob from '../components/recruiterComponents/AdminPostJob';
+// import DrawerList from '../components/recruiterComponents/DrawerList';
 
 const drawerWidth = 240;
 
@@ -34,6 +36,8 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth + drawerWidth,
+    paddingTop: 100,
+    minHeight: 740,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -62,16 +66,16 @@ class RecruiterApp extends React.Component {
     this.setState({ open: false });
   };
 
-  componentDidMount() {
-    axios.get('http://localhost:3000/api/v1/users/1/jobs')
-      .then(response => {
-          console.log(response)
-          this.setState({
-              recruiterData: response.data
-          })
-      })
-      .catch(error => console.log(error))
-  }
+  // componentDidMount() {
+  //   axios.get('http://localhost:3000/api/v1/users/1/jobs')
+  //     .then(response => {
+  //         console.log(response)
+  //         this.setState({
+  //             recruiterData: response.data
+  //         })
+  //     })
+  //     .catch(error => console.log(error))
+  // }
 
   render() {
     const { classes, theme } = this.props;
@@ -82,18 +86,18 @@ class RecruiterApp extends React.Component {
           handleDrawerOpen={this.handleDrawerOpen}
           state={this.state}
         />
-        <Drawler
+        <RecruiterDrawer
           handleDrawerClose={this.handleDrawerClose}
           open={this.state.open}
         />
         <main
           className={classNames(classes.content, {[classes.contentShift]: this.state.open,})}
         >
-          <main className={classes.content}>
 
-            <AdminJobFlow recruiterData={this.state.recruiterData}/>
+                  <AdminJobFlow />
 
-          </main>
+
+
         </main>
       </div>
     );

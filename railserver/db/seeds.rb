@@ -19,6 +19,13 @@ unless Rails.env.development?
   exit 0
 end
 
+
+# Random ARRAYS
+job_title = [FrontEndDeveloper = "Front End Developer", BackEndDeveloper = "Back End Developer", FullStackDeveloper = "Full Stack Developer", SoftwareArchitect = "Software Architect", SoftwareDeveloper = "Software Developer", SoftwareEngineer = "Software Engineer"]
+job_level = [dog="Junior", cat="Senior", turtle="Manager"]
+skill = [label1="C#",label2="Elixir",label3="Go",label4="Java",label5="JavaScript",label6="PHP",label7="Python",label8="Ruby",label9="Rust",label10="Swift",label11="TypeScript",label13="Angular",label14="Django",label15="Express",label16="Node",label17="Rails",label18="React",label19="Vue"]
+postal_code = [dog="M3H 6A7", cat="M4C 1X5", turtle="M4E 0A7", A1="M4C 1R3", A2="M4C 3J6", A3="M4C 3X1", A4="M4C 4L4"]
+
 # Let's do this ...
 
 puts "Destroy Tables ..."
@@ -41,29 +48,46 @@ end
 
 puts "Creating new Users ..."
 
+usr6 = User.create(
+  :email => 'weihan.sw@gmail.com',
+  :password => '123456',
+  :user_type => 'recruiter',
+  :password_confirmation => '123456'
+)
+usr7 = User.create(
+  :email => 'jay@gmail.com',
+  :password => '123456',
+  :user_type => 'applicant',
+  :password_confirmation => '123456'
+)
 usr1 = User.create(
   :email => Faker::Internet.email,
   :password => '123456',
+  :user_type => 'applicant',
   :password_confirmation => '123456'
 )
 usr2 = User.create(
   :email => Faker::Internet.email,
   :password => '123456',
+  :user_type => 'applicant',
   :password_confirmation => '123456'
 )
 usr3 = User.create(
   :email => Faker::Internet.email,
   :password => '123456',
+  :user_type => 'applicant',
   :password_confirmation => '123456'
 )
 usr4 = User.create(
   :email => Faker::Internet.email,
   :password => '123456',
+  :user_type => 'applicant',
   :password_confirmation => '123456'
 )
 usr5 = User.create(
   :email => Faker::Internet.email,
   :password => '123456',
+  :user_type => 'applicant',
   :password_confirmation => '123456'
 )
 
@@ -72,57 +96,57 @@ usr5 = User.create(
 puts "Re-creating Profiles ..."
 
 pro1 = Profile.create(
-  :first_name => Faker::Games::Pokemon.name,
-  :last_name => Faker::Games::Pokemon.move,
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
   :phone_number =>  Faker::PhoneNumber.cell_phone,
-  :postal_code => Faker::Address.postcode,
+  :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,
-  :city => Faker::Address.city,
-  :country => Faker::Address.country,
+  :city => 'Toronto',
+  :country => 'Canada',
   :user => usr1
 )
 
 pro2 = Profile.create(
-  :first_name => Faker::Games::Pokemon.name,
-  :last_name => Faker::Games::Pokemon.move,
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
   :phone_number =>  Faker::PhoneNumber.cell_phone,
-  :postal_code => Faker::Address.postcode,
+  :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,
-  :city => Faker::Address.city,
-  :country => Faker::Address.country,
+  :city => 'Toronto',
+  :country => 'Canada',
   :user => usr2
 )
 
 pro3 = Profile.create(
-  :first_name => Faker::Games::Pokemon.name,
-  :last_name => Faker::Games::Pokemon.move,
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
   :phone_number =>  Faker::PhoneNumber.cell_phone,
-  :postal_code => Faker::Address.postcode,
+  :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,
-  :city => Faker::Address.city,
-  :country => Faker::Address.country,
+  :city => 'Toronto',
+  :country => 'Canada',
   :user => usr3
 )
 
 pro4 = Profile.create(
-  :first_name => Faker::Games::Pokemon.name,
-  :last_name => Faker::Games::Pokemon.move,
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
   :phone_number =>  Faker::PhoneNumber.cell_phone,
-  :postal_code => Faker::Address.postcode,
+  :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,
-  :city => Faker::Address.city,
-  :country => Faker::Address.country,
+  :city => 'Toronto',
+  :country => 'Canada',
   :user => usr4
 )
 
 pro5 = Profile.create(
-  :first_name => Faker::Games::Pokemon.name,
-  :last_name => Faker::Games::Pokemon.move,
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
   :phone_number =>  Faker::PhoneNumber.cell_phone,
-  :postal_code => Faker::Address.postcode,
+  :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,
-  :city => Faker::Address.city,
-  :country => Faker::Address.country,
+  :city => 'Toronto',
+  :country => 'Canada',
   :user => usr5
 )
 
@@ -294,40 +318,40 @@ puts "Re-creating Carrer ..."
 
 
 carr1 = pro1.carrers.create!({
-  job_category:  Faker::Job.field,
-  job_title: Faker::Job.title,
+  job_category:  'IT',
+  job_title: job_title.sample,
   month_experience: Faker::Number.between(1, 100),
   description: Faker::Hipster.paragraph(3),
   user: usr1
 })
 
 carr2 = pro2.carrers.create!({
-  job_category:  Faker::Job.field,
-  job_title: Faker::Job.title,
+  job_category:  'IT',
+  job_title: job_title.sample,
   month_experience: Faker::Number.between(1, 100),
   description: Faker::Hipster.paragraph(3),
   user: usr2
 })
 
 carr3 = pro3.carrers.create!({
-  job_category:  Faker::Job.field,
-  job_title: Faker::Job.title,
+  job_category:  'IT',
+  job_title: job_title.sample,
   month_experience: Faker::Number.between(1, 100),
   description: Faker::Hipster.paragraph(3),
   user: usr3
 })
 
 carr4 = pro4.carrers.create!({
-  job_category:  Faker::Job.field,
-  job_title: Faker::Job.title,
+  job_category:  'IT',
+  job_title: job_title.sample,
   month_experience: Faker::Number.between(1, 100),
   description: Faker::Hipster.paragraph(3),
   user: usr4
 })
 
 carr5 = pro5.carrers.create!({
-  job_category:  Faker::Job.field,
-  job_title: Faker::Job.title,
+  job_category:  'IT',
+  job_title: job_title.sample,
   month_experience: Faker::Number.between(1, 100),
   description: Faker::Hipster.paragraph(3),
   user: usr5
@@ -375,48 +399,76 @@ AboutMe.create(
 puts "Re-creating Jobs ..."
 
 
+
 job1 = Job.create(
-  :job_category => Faker::Games::Pokemon.name,
-  :job_title => Faker::Games::Pokemon.move,
-  :job_level =>  Faker::PhoneNumber.cell_phone,
-  :job_description => Faker::Address.postcode,
-  :postal_code => Faker::Address.postcode,
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
+  :user => usr1
+)
+
+job11 = Job.create(
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
+  :user => usr1
+)
+
+job12 = Job.create(
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
+  :user => usr1
+)
+
+job13 = Job.create(
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
   :user => usr1
 )
 
 job2 = Job.create(
-  :job_category => Faker::Games::Pokemon.name,
-  :job_title => Faker::Games::Pokemon.move,
-  :job_level =>  Faker::PhoneNumber.cell_phone,
-  :job_description => Faker::Address.postcode,
-  :postal_code => Faker::Address.postcode,
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
   :user => usr2
 )
 
 job3 = Job.create(
-  :job_category => Faker::Games::Pokemon.name,
-  :job_title => Faker::Games::Pokemon.move,
-  :job_level =>  Faker::PhoneNumber.cell_phone,
-  :job_description => Faker::Address.postcode,
-  :postal_code => Faker::Address.postcode,
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
   :user => usr3
 )
 
 job4 = Job.create(
-  :job_category => Faker::Games::Pokemon.name,
-  :job_title => Faker::Games::Pokemon.move,
-  :job_level =>  Faker::PhoneNumber.cell_phone,
-  :job_description => Faker::Address.postcode,
-  :postal_code => Faker::Address.postcode,
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
   :user => usr4
 )
 
 job5 = Job.create(
-  :job_category => Faker::Games::Pokemon.name,
-  :job_title => Faker::Games::Pokemon.move,
-  :job_level =>  Faker::PhoneNumber.cell_phone,
-  :job_description => Faker::Address.postcode,
-  :postal_code => Faker::Address.postcode,
+  :job_category => "IT",
+  :job_title => job_title.sample,
+  :job_level =>  job_level.sample,
+  :job_description => Faker::Hipster.paragraph(3),
+  :postal_code => postal_code.sample,
   :user => usr5
 )
 
@@ -425,208 +477,293 @@ job5 = Job.create(
 puts "Re-creating Skills ..."
 
 job1.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job1.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job1.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job11.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job12.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job12.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job12.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job13.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job13.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job13.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job13.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job13.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job12.skills.create!({
+  area:  'language',
+  skill: skill.sample
+})
+
+job12.skills.create!({
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job2.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job3.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job4.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 job5.skills.create!({
-  area:  Faker::Job.field,
-  skill: Faker::Job.title
+  area:  'language',
+  skill: skill.sample
 })
 
 ## COMPANY
@@ -634,101 +771,119 @@ job5.skills.create!({
 puts "Re-creating Companies ..."
 
 Company.create(
-  :company_name => Faker::Job.field,
-  :company_description => Faker::Job.field,
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
   :number_of_workers => Faker::Number.between(1, 100),
   :job => job1,
   :user => usr1
 )
 
 Company.create(
-  :company_name => Faker::Job.field,
-  :company_description => Faker::Job.field,
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
+  :number_of_workers => Faker::Number.between(1, 100),
+  :job => job11,
+  :user => usr1
+)
+
+Company.create(
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
+  :number_of_workers => Faker::Number.between(1, 100),
+  :job => job12,
+  :user => usr1
+)
+
+Company.create(
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
+  :number_of_workers => Faker::Number.between(1, 100),
+  :job => job13,
+  :user => usr1
+)
+
+Company.create(
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
   :number_of_workers => Faker::Number.between(1, 100),
   :job => job2,
   :user => usr2
 )
 
 Company.create(
-  :company_name => Faker::Job.field,
-  :company_description => Faker::Job.field,
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
   :number_of_workers => Faker::Number.between(1, 100),
   :job => job3,
   :user => usr3
 )
 
 Company.create(
-  :company_name => Faker::Job.field,
-  :company_description => Faker::Job.field,
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
   :number_of_workers => Faker::Number.between(1, 100),
   :job => job4,
   :user => usr4
 )
 
 Company.create(
-  :company_name => Faker::Job.field,
-  :company_description => Faker::Job.field,
+  :company_name => Faker::Company.name,
+  :company_description => Faker::GreekPhilosophers.quote,
   :number_of_workers => Faker::Number.between(1, 100),
   :job => job5,
   :user => usr5
 )
 
 
-## COMPANY
+## JOB EDUCATION
 
 puts "Re-creating Job_Educations ..."
 
 JobEducation.create(
-  :education_level => Faker::Educator.university,
-  :education_area => Faker::Educator.degree,
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
   :job => job1
 )
 
 JobEducation.create(
-  :education_level => Faker::Educator.university,
-  :education_area => Faker::Educator.degree,
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
   :job => job2
 )
 
 JobEducation.create(
-  :education_level => Faker::Educator.university,
-  :education_area => Faker::Educator.degree,
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
   :job => job3
 )
 
 JobEducation.create(
-  :education_level => Faker::Educator.university,
-  :education_area => Faker::Educator.degree,
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
+  :job => job11
+)
+
+JobEducation.create(
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
+  :job => job12
+)
+
+JobEducation.create(
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
+  :job => job13
+)
+
+JobEducation.create(
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
   :job => job4
 )
 
 JobEducation.create(
-  :education_level => Faker::Educator.university,
-  :education_area => Faker::Educator.degree,
+  :education_level => Faker::Job.education_level,
+  :education_area => "Computer Science",
   :job => job5
 )
 
-# job1.job_education.create!({
-#   education_level: Faker::Educator.university,
-#   education_area: Faker::Educator.degree
-# })
-
-# job2.job_education.create!({
-#   education_level: Faker::Educator.university,
-#   education_area: Faker::Educator.degree
-# })
-
-# job3.job_education.create!({
-#   education_level: Faker::Educator.university,
-#   education_area: Faker::Educator.degree
-# })
-
-# job4.job_education.create!({
-#   education_level: Faker::Educator.university,
-#   education_area: Faker::Educator.degree
-# })
-
-# job5.job_education.create!({
-#   education_level: Faker::Educator.university,
-#   education_area: Faker::Educator.degree
-# })

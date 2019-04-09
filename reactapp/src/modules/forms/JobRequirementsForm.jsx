@@ -18,20 +18,10 @@ const styles = theme => ({
 });
 
 class CheckboxesGroup extends React.Component {
-  state = {
-    gilad: true,
-    jason: false,
-    antoine: false,
-  };
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
 
   render() {
     const { classes } = this.props;
-    const { gilad, jason, antoine } = this.state;
-    // const error = [gilad, jason, antoine].filter(v => v).length !== 2;
+    const { language, framework } = this.props.sk;
 
     return (
       <div className={classes.root}>
@@ -40,22 +30,30 @@ class CheckboxesGroup extends React.Component {
           <FormGroup>
             <FormControlLabel
               control={
-                <Checkbox checked={gilad} onChange={this.handleChange('gilad')} value="gilad" />
+                <Checkbox
+                  checked={language.c}
+                  onChange={this.props.lngHandler('c')}
+                  value="c"
+                />
               }
               label="C#"
             />
             <FormControlLabel
               control={
-                <Checkbox checked={jason} onChange={this.handleChange('jason')} value="jason" />
+                <Checkbox
+                  checked={language.elixir}
+                  onChange={this.props.lngHandler('elixir')}
+                  value="elixir"
+                />
               }
               label="Elixir"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="antoine"
+                  checked={language.go}
+                  onChange={this.props.lngHandler('go')}
+                  value="go"
                 />
               }
               label="Go"
@@ -63,9 +61,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.java}
+                  onChange={this.props.lngHandler('java')}
+                  value="java"
                 />
               }
               label="Java"
@@ -73,9 +71,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.js}
+                  onChange={this.props.lngHandler('js')}
+                  value="js"
                 />
               }
               label="JavaScript"
@@ -83,9 +81,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.php}
+                  onChange={this.props.lngHandler('php')}
+                  value="php"
                 />
               }
               label="PHP"
@@ -93,9 +91,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.python}
+                  onChange={this.props.lngHandler('python')}
+                  value="python"
                 />
               }
               label="Python"
@@ -103,9 +101,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.ruby}
+                  onChange={this.props.lngHandler('ruby')}
+                  value="ruby"
                 />
               }
               label="Ruby"
@@ -113,9 +111,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.rust}
+                  onChange={this.props.lngHandler('rust')}
+                  value="rust"
                 />
               }
               label="Rust"
@@ -123,9 +121,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.swift}
+                  onChange={this.props.lngHandler('swift')}
+                  value="swift"
                 />
               }
               label="Swift"
@@ -133,15 +131,15 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={language.typescript}
+                  onChange={this.props.lngHandler('typescript')}
+                  value="typescript"
                 />
               }
               label="TypeScript"
             />
           </FormGroup>
-          <FormHelperText>Be careful</FormHelperText>
+          <FormHelperText>Select at least one</FormHelperText>
         </FormControl>
 
 
@@ -150,22 +148,30 @@ class CheckboxesGroup extends React.Component {
           <FormGroup>
             <FormControlLabel
               control={
-                <Checkbox checked={gilad} onChange={this.handleChange('gilad')} value="gilad" />
+                <Checkbox
+                  checked={framework.angular}
+                  onChange={this.props.fwHandler('angular')}
+                  value="angular"
+                />
               }
               label="Angular"
             />
             <FormControlLabel
               control={
-                <Checkbox checked={jason} onChange={this.handleChange('jason')} value="jason" />
+                <Checkbox
+                  checked={framework.django}
+                  onChange={this.props.fwHandler('django')}
+                  value="django"
+                />
               }
               label="Django"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="antoine"
+                  checked={framework.express}
+                  onChange={this.props.fwHandler('express')}
+                  value="express"
                 />
               }
               label="Express"
@@ -173,9 +179,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={framework.node}
+                  onChange={this.props.fwHandler('node')}
+                  value="node"
                 />
               }
               label="Node"
@@ -183,9 +189,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={framework.rails}
+                  onChange={this.props.fwHandler('rails')}
+                  value="rails"
                 />
               }
               label="Rails"
@@ -193,9 +199,9 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={framework.react}
+                  onChange={this.props.fwHandler('react')}
+                  value="react"
                 />
               }
               label="React"
@@ -203,31 +209,16 @@ class CheckboxesGroup extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
+                  checked={framework.vue}
+                  onChange={this.props.fwHandler('vue')}
+                  value="vue"
                 />
               }
               label="Vue"
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={antoine}
-                  onChange={this.handleChange('antoine')}
-                  value="teste"
-                />
-              }
-              label="Ruby"
-            />
           </FormGroup>
           <FormHelperText>Select at least one</FormHelperText>
         </FormControl>
-
-
-
-
-
       </div>
     );
   }
