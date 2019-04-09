@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import SwipeableViews from 'react-swipeable-views';
 
 // Material-Ui Tags
 import { withStyles } from '@material-ui/core/styles';
@@ -16,7 +15,6 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button';
 
 // Material-Ui Icon
 import MenuIcon from '@material-ui/icons/Menu';
@@ -28,23 +26,23 @@ import PersonIcon from '@material-ui/icons/Person';
 
 import Users from './Users';
 import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
+import Content from '../components/recruiterComponents/AdminPostJob';
 import DrawerList from '../components/recruiterComponents/DrawerList';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    display: 'flex',
+    margin: 'auto',
+    overflow: 'hidden',
+    flexDirection: "column"
   },
   button: {
     margin: theme.spacing.unit,
   },
   input: {
     display: 'none',
-  },
-  logout:{
-
-
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -105,7 +103,7 @@ const styles = theme => ({
   },
 });
 
-class Navbar extends React.Component {
+class CandidateApp extends React.Component {
   state = {
     open: true,
   };
@@ -117,11 +115,6 @@ class Navbar extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
-
-  handleLogout = () => {
-    localStorage.removeItem('jwtToken')
-    this.props.history.push('/')
-  }
 
   render() {
     const { classes, theme } = this.props;
@@ -148,7 +141,6 @@ class Navbar extends React.Component {
             <Typography variant="h6" color="inherit" noWrap>
               AwesomeCV
             </Typography>
-            <Button color="inherit" className={classes.logout} onClick={this.handleLogout}>Logout</Button>
           </Toolbar>
         </AppBar>
 
@@ -196,21 +188,20 @@ class Navbar extends React.Component {
           <main className={classes.content}>
 
            <div className={classes.toolbar} />
-              {/* <Router> */}
-                {/* <Route path="/users/:id" component={Users} /> */}
-                <Users />
-              {/* </Router> */}
-                
+           <Content/>
+
           </main>
         </main>
       </div>
     );
+
+
   }
 }
 
-Navbar.propTypes = {
+CandidateApp.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Navbar);
+export default withStyles(styles, { withTheme: true })(CandidateApp);

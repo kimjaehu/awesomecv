@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-
+import axios from 'axios'
 
   const styles = theme => ({
     button: {
@@ -136,6 +136,33 @@ class Resume extends Component {
   onClickHandler = (event) => {
     event.preventDefault();
     console.log(this.state)
+  }
+  
+  componentDidMount() {
+    axios.get('/api/v1/users/1/profiles')
+    .then(res => {
+      console.log(res)
+      this.setState({ 
+        basic:  {
+          firstName: res.data.first_name,
+          lastName: res.data.last_name,
+          email: '',
+          phoneNumber: res.data.phone_number,
+          streetAddress: res.data.street_address,
+          city: res.data.city,
+          province: res.data.state,
+          postalCode: res.data.postal_code,
+          },
+        summary: {
+          summary: res.data.about_me.description
+        },
+      })
+      
+    }).catch(err => {
+      
+    })
+
+
   }
 
   render() {

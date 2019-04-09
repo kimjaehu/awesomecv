@@ -45,7 +45,12 @@ class Main extends Component {
           this.setState({ user: res.data })
           localStorage.setItem('jwtToken',res.data.token)
           console.log('what is this.props',this.props)
-          this.props.history.push(`/users/${res.data.user.id}`)
+          // this.props.history.push(`/applicant/${res.data.user.id}`)
+          if (res.data.user_type === "candidate") {
+          this.props.history.push(`/applicant/1`)
+          } else {
+            this.props.history.push(`/recruiter/1`)
+          }
         },
         (err) => this.setState({ errors: "Wrong email or password" })
       )

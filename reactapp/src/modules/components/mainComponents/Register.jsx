@@ -8,7 +8,6 @@ import { Redirect } from 'react-router'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import axios from "axios";
 
 const styles = theme => ({
   button: {

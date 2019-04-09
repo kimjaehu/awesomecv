@@ -44,7 +44,7 @@ class Education extends Component {
     degree: '',
     schoolFrom: '',
     SchoolTo: ''
-  }
+  } 
 
   educationValueHandler = (field) => {
     return (event) => {

@@ -15,7 +15,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
-import AdminMap from './AdminMap'
+import AdminMap from './AdminMap.jsx'
 
 const styles = theme => ({
   card: {
@@ -38,16 +38,6 @@ const styles = theme => ({
   actions: {
     display: 'flex',
   },
-  // expand: {
-  //   transform: 'rotate(0deg)',
-  //   marginLeft: 'auto',
-  //   transition: theme.transitions.create('transform', {
-  //     duration: theme.transitions.duration.shortest,
-  //   }),
-  // },
-  // expandOpen: {
-  //   transform: 'rotate(180deg)',
-  // },
   avatar: {
     backgroundColor: red[500],
   },
@@ -62,14 +52,14 @@ const styles = theme => ({
 });
 
 class RecipeReviewCard extends React.Component {
-  // state = { expanded: false };
-
-  // handleExpandClick = () => {
-  //   this.setState(state => ({ expanded: !state.expanded }));
-  // };
 
   render() {
     const { classes } = this.props;
+    const jobData = this.props.jobData
+    const id = jobData.id
+    const job_title = jobData.job_title
+    const job_description = jobData.job_description
+    const job_created_at = jobData.job_created_at
 
     return (
       <Grid alignContent="flex-start" className={classes.gridCard}>
@@ -77,7 +67,7 @@ class RecipeReviewCard extends React.Component {
         <CardHeader
           avatar={
             <Avatar className={classes.avatar}>
-              R
+              {id}
             </Avatar>
           }
           action={
@@ -87,16 +77,15 @@ class RecipeReviewCard extends React.Component {
               </Badge>
             </IconButton>
           }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
+          title={job_title}
+          subheader={job_created_at}
         />
         <CardMedia>
-          <AdminMap className="adminMap" />
+          {/*<AdminMap className="adminMap" />*/}
         </CardMedia>
         <CardContent>
           <Typography component="p">
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
+            {job_description}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
