@@ -12,9 +12,10 @@ import { withStyles } from '@material-ui/core/styles';
 // Views Pages
 import Users from './Users';
 import NavBar from './NavBarTeste';
-import Drawler from './DrawlerTeste';
+import RecruiterDrawer from './RecruiterDrawer';
 import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
-import DrawerList from '../components/recruiterComponents/DrawerList';
+import AdminPostJob from '../components/recruiterComponents/AdminPostJob';
+// import DrawerList from '../components/recruiterComponents/DrawerList';
 
 const drawerWidth = 240;
 
@@ -34,6 +35,8 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth + drawerWidth,
+    paddingTop: 100,
+    minHeight: 740,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -82,18 +85,18 @@ class RecruiterApp extends React.Component {
           handleDrawerOpen={this.handleDrawerOpen}
           state={this.state}
         />
-        <Drawler
+        <RecruiterDrawer
           handleDrawerClose={this.handleDrawerClose}
           open={this.state.open}
         />
         <main
           className={classNames(classes.content, {[classes.contentShift]: this.state.open,})}
         >
-          <main className={classes.content}>
 
-            <AdminJobFlow recruiterData={this.state.recruiterData}/>
 
-          </main>
+            <AdminPostJob recruiterData={this.state.recruiterData}/>
+
+
         </main>
       </div>
     );

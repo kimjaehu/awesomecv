@@ -8,7 +8,7 @@ import Navbar from './modules/views/Navbar'
 import RecruiterAppPostJob from './modules/views/RecruiterAppPostJob'
 import RecruiterAppJobs from './modules/views/RecruiterAppJobs'
 import Home from './modules/views/Home'
-import Teste from './modules/views/Teste'
+import RecruiterApp from './modules/views/RecruiterApp'
 
 class App extends Component {
 
@@ -24,7 +24,7 @@ class App extends Component {
         <Route path="/recruiter/recruiter_id/find" exact component={Home} />
         <Route path="/recruiter/recruiter_id/post_job" exact component={RecruiterAppPostJob} />
         <Route path="/recruiter/recruiter_id/jobs" exact component={RecruiterAppJobs} />
-        <Route path="/teste" exact component={Teste} />
+        <Route path="/RecruiterApp" exact component={RecruiterApp} />
       </Router>
     );
   }

@@ -27,7 +27,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Users from './Users';
 import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
 import Content from '../components/recruiterComponents/AdminPostJob';
-import DrawerList from '../components/recruiterComponents/DrawerList';
+import DrawerList from '../components/recruiterComponents/RecruiterDrawerList';
 
 const drawerWidth = 240;
 
