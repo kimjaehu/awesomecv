@@ -15,7 +15,9 @@ import PersonIcon from '@material-ui/icons/Person';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
-import AdminMap from './AdminMap.jsx'
+import SimpleTable from './AdminJobTable.jsx';
+import Button from '@material-ui/core/Button';
+
 
 const styles = theme => ({
   card: {
@@ -52,6 +54,23 @@ const styles = theme => ({
 });
 
 class RecipeReviewCard extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleClickOpen = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleClose = value => {
+    this.setState({ selectedValue: value, open: false });
+  };
 
   render() {
     const { classes } = this.props;
@@ -90,7 +109,9 @@ class RecipeReviewCard extends React.Component {
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
+          <IconButton
+            aria-label="Add to favorites"
+          >
             <ZoomInIcon />
           </IconButton>
 
@@ -99,6 +120,14 @@ class RecipeReviewCard extends React.Component {
           <IconButton aria-label="Share">
             <ShareIcon />
           </IconButton>
+
+          <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+          Open simple dialog
+        </Button>
+        <SimpleTable
+          open={this.state.open}
+          onClose={this.handleClose}
+        />
 
 
 
