@@ -135,13 +135,14 @@ class Resume extends Component {
 
   onClickHandler = (event) => {
     event.preventDefault();
+    alert('Resume has been saved')
     console.log(this.state)
   }
   
   componentDidMount() {
-    axios.get('/api/v1/users/1/profiles')
+    axios.get('/api/v1/users/4/profiles')
     .then(res => {
-      console.log(res)
+      console.log('res',res)
       this.setState({ 
         basic:  {
           firstName: res.data.first_name,
@@ -186,6 +187,7 @@ class Resume extends Component {
           <SkillList skill={this.state.skill} handler={this.skillHandler} edit={this.editSkill} />
           <Divider />
           <Button className={classes.button} variant="outlined" color="default" onClick={this.onClickHandler}>SAVE MY RESUME</Button>
+            
         </Paper>
       </div>
     );

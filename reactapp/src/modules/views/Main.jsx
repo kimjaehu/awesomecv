@@ -62,8 +62,14 @@ class Main extends React.Component {
                 style={{ minHeight: '100vh'}}
               >
              
-                <Grid item xs={10} sm={4}>
-                <Typography component="h2" variant="h2" align="center" color="primary" gutterBottom>Welcome. It's Awesome</Typography>
+                <Grid item xs={8} sm={4}>
+                <div>
+                  <Typography component="h2" variant="h2" align="center" color="primary" gutterBottom>Welcome. It's </Typography>
+                </div>
+                <div>
+                  <Typography component="h2" variant="h2" align="center" color="primary" gutterBottom> Awesome </Typography>
+                </div>
+                
                 <Paper className={classes.paper} elevation={1}>
                   <AppBar position="static" color="default">
                     <Tabs
@@ -90,11 +96,8 @@ class Main extends React.Component {
                     <Register userRegistrationRequest={userRegistrationRequest}/>
                   </TabContainer>
                   </SwipeableViews>     
-                </Paper>
-
-                  
-              </Grid>   
-          
+                </Paper>                  
+              </Grid> 
             </Grid>
           
           

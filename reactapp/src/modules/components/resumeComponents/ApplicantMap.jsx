@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Geocode from "react-geocode";
-import { promised } from 'q';
 import axios from 'axios';
 
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
@@ -53,7 +52,7 @@ class Map extends Component {
 
   state = {
     searchLocation:'',
-    searchLatLng:{lat: 43.6532, lng: -79.3832},
+    searchLatLng:{lat: 43.6752, lng: -79.3232},
     awesomeJobs:[
       // {lat: 43.6432, lng: -79.3832},
       // {lat: 43.6532, lng: -79.3832},
@@ -179,6 +178,9 @@ class Map extends Component {
     //     })
     // }
 
+  apply = () => {
+     axios.post('/api/v1/users/2/jobs/1/applicants')
+  }
 
   initMap = async () => {
 
@@ -195,24 +197,34 @@ class Map extends Component {
       this.state.awesomeJobs.map( async (awesomeJob)  => {
       var contentString =
       `
-      <div> 
-        <h2> Job Title: ${awesomeJob.job_title} </h2> 
+      <div class="infobox-wrapper>
+        <div class="infowindowbox>
+
+        <div> 
+          <h2> Job Title: ${awesomeJob.job_title} </h2> 
+        </div>
+        <div>
+          <h5> Job Description: </h5>
+        </div>
+        <div>
+          ${awesomeJob.job_description}
+        <div>
+        <div>
+          <h5> ${awesomeJob.company.company_name} </h5>
+        </div>
+        <div>
+          <h5> Level: ${awesomeJob.job_level} </h5>
+        </div>
+          <span>
+            <a class="btn btn-primary" href="/applicant/1" onClick=${this.apply()}>Apply Now</a>
+
+          </span>
+          
+        </div>
       </div>
-      <div>
-        <h5> Job Description: </h5>
-      </div>
-      <div>
-        ${awesomeJob.job_description}
-      <div>
-      <div>
-        <h5> ${awesomeJob.company.company_name} </h5>
-      </div>
-      <div>
-        <h5> Level: ${awesomeJob.job_level} </h5>
-      </div>
-      <button type="button" class="btn btn-primary">Apply Now</button>
-      
+
       ` //${job.title}
+      
       // create a marker
       let location = await this.geocoder(awesomeJob.postal_code)
       console.log('location', await this.geocoder(awesomeJob.postal_code))
