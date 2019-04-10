@@ -47,7 +47,8 @@ class Main extends Component {
           console.log('what is this.props',this.props)
           // this.props.history.push(`/applicant/${res.data.user.id}`)
           if (res.data.user.user_type === "applicant") {
-          this.props.history.push(`/applicant/1`)
+            console.log('asdfafdafd',res.data)
+          this.props.history.push(`/applicant/${res.data.user.id}`)
           } else {
             this.props.history.push(`/RecruiterApp`)
           }
