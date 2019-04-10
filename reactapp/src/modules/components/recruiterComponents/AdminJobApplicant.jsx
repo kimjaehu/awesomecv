@@ -35,9 +35,9 @@ class ApplicantDialog extends React.Component {
 
     return (
       <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" {...other}>
-        <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+        <DialogTitle id="simple-dialog-title">KEEP CALM...WE HAVE TIME...</DialogTitle>
         <div>
-          KEEP CALM
+
         </div>
       </Dialog>
     );
