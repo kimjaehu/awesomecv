@@ -37,6 +37,7 @@ Profile.destroy_all
 Skill.destroy_all
 Company.destroy_all
 JobEducation.destroy_all
+Applicant.destroy_all
 Job.destroy_all
 User.destroy_all
 
@@ -48,26 +49,14 @@ end
 
 puts "Creating new Users ..."
 
-usr6 = User.create(
+usr1 = User.create(
   :email => 'weihan.sw@gmail.com',
   :password => '123456',
   :user_type => 'recruiter',
   :password_confirmation => '123456'
 )
-usr7 = User.create(
-  :email => 'jay@gmail.com',
-  :password => '123456',
-  :user_type => 'applicant',
-  :password_confirmation => '123456'
-)
-usr1 = User.create(
-  :email => Faker::Internet.email,
-  :password => '123456',
-  :user_type => 'applicant',
-  :password_confirmation => '123456'
-)
 usr2 = User.create(
-  :email => Faker::Internet.email,
+  :email => 'jay@gmail.com',
   :password => '123456',
   :user_type => 'applicant',
   :password_confirmation => '123456'
@@ -85,6 +74,18 @@ usr4 = User.create(
   :password_confirmation => '123456'
 )
 usr5 = User.create(
+  :email => Faker::Internet.email,
+  :password => '123456',
+  :user_type => 'applicant',
+  :password_confirmation => '123456'
+)
+usr6 = User.create(
+  :email => Faker::Internet.email,
+  :password => '123456',
+  :user_type => 'applicant',
+  :password_confirmation => '123456'
+)
+usr7 = User.create(
   :email => Faker::Internet.email,
   :password => '123456',
   :user_type => 'applicant',
@@ -148,6 +149,28 @@ pro5 = Profile.create(
   :city => 'Toronto',
   :country => 'Canada',
   :user => usr5
+)
+
+pro6 = Profile.create(
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
+  :phone_number =>  Faker::PhoneNumber.cell_phone,
+  :postal_code => postal_code.sample,
+  :street_address => Faker::Address.street_address,
+  :city => 'Toronto',
+  :country => 'Canada',
+  :user => usr6
+)
+
+pro7 = Profile.create(
+  :first_name => Faker::Name.first_name,
+  :last_name => Faker::Name.last_name,
+  :phone_number =>  Faker::PhoneNumber.cell_phone,
+  :postal_code => postal_code.sample,
+  :street_address => Faker::Address.street_address,
+  :city => 'Toronto',
+  :country => 'Canada',
+  :user => usr7
 )
 
 
@@ -311,6 +334,24 @@ edu17 = pro5.educations.create!({
   user: usr5
 })
 
+edu18 = pro5.educations.create!({
+  school_name: Faker::Educator.university,
+  degree: Faker::Educator.degree,
+  start_date: Faker::Date.backward(14),
+  end_date: Faker::Date.backward(14),
+  notes: Faker::GreekPhilosophers.quote,
+  user: usr6
+})
+
+edu19 = pro5.educations.create!({
+  school_name: Faker::Educator.university,
+  degree: Faker::Educator.degree,
+  start_date: Faker::Date.backward(14),
+  end_date: Faker::Date.backward(14),
+  notes: Faker::GreekPhilosophers.quote,
+  user: usr7
+})
+
 
 ## CARRER
 
@@ -357,6 +398,22 @@ carr5 = pro5.carrers.create!({
   user: usr5
 })
 
+carr6 = pro6.carrers.create!({
+  job_category:  'IT',
+  job_title: job_title.sample,
+  month_experience: Faker::Number.between(1, 100),
+  description: Faker::Hipster.paragraph(3),
+  user: usr6
+})
+
+carr7 = pro7.carrers.create!({
+  job_category:  'IT',
+  job_title: job_title.sample,
+  month_experience: Faker::Number.between(1, 100),
+  description: Faker::Hipster.paragraph(3),
+  user: usr7
+})
+
 
 
 ## ABOUTME
@@ -390,8 +447,20 @@ AboutMe.create(
 
 AboutMe.create(
   :description => Faker::Hipster.paragraph(3),
+  :profile => pro6,
+  :user => usr6
+)
+
+AboutMe.create(
+  :description => Faker::Hipster.paragraph(3),
   :profile => pro5,
   :user => usr5
+)
+
+AboutMe.create(
+  :description => Faker::Hipster.paragraph(3),
+  :profile => pro7,
+  :user => usr7
 )
 
 ## JOB
@@ -886,4 +955,59 @@ JobEducation.create(
   :education_area => "Computer Science",
   :job => job5
 )
+
+## JOB APPLICANTS
+
+puts "Re-creating Applicant ..."
+
+Applicant.create(
+  :status => "applied",
+  :job => job1,
+  :user => usr5
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job1,
+  :user => usr3
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job1,
+  :user => usr4
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job1,
+  :user => usr6
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job11,
+  :user => usr7
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job11,
+  :user => usr3
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job11,
+  :user => usr5
+)
+
+Applicant.create(
+  :status => "applied",
+  :job => job11,
+  :user => usr6
+)
+
+
+
 

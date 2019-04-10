@@ -15,7 +15,6 @@ Rails.application.routes.draw do
         resources :jobs do
           resources :applicants
         end
-        resources :applicants
       end
     end
   end
