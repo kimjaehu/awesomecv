@@ -41,8 +41,6 @@ class Content extends React.Component {
     axios.get('http://localhost:3000/api/v1/users/3/jobs')
     .then(response => {
       this.setState({ recruiterData: response.data });
-      // console.log('TESTE')
-      // console.log(this.state.recruiterData)
     })
     .catch(function (error) {
       console.log(error);
@@ -55,42 +53,24 @@ class Content extends React.Component {
       return this.state.recruiterData.map(function(object, i){
             return <RecipeReviewCard jobData={object} />;
         });
-
     } else {
       return <RecipeReviewCard jobData={this.state.recruiterData} />;
     }
-
-    // this.state.recruiterData.forEach( function(job, index) {
-    //   console.log(job)
-    //    return <RecipeReviewCard jobData={job} />;
-    //  });
-    // console.log(this.state.recruiterData.length)
-    // return <RecipeReviewCard jobData={this.state.recruiterData} />;
-    //     return this.state.recruiterData.map(function(object, i){
-    //         return <RecipeReviewCard jobData={object} />;
-    //     });
   }
-
-
 
   render() {
     const { classes } = this.props;
 
     return (
       <Paper className={classes.paper}>
-
           <Grid container>
-
-          {this.tabRow()}
-
-
-
+            {this.tabRow()}
           </Grid>
-
       </Paper>
     );
   }
 }
+
 Content.propTypes = {
   classes: PropTypes.object.isRequired,
 };

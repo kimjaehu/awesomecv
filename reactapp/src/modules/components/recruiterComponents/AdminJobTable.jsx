@@ -1,20 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Material-Ui
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Icon from '@material-ui/core/Icon';
+
+
 import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import AssignmentInd from '@material-ui/icons/AssignmentInd';
-import SendIcon from '@material-ui/icons/Send';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
-// assignment_ind
+
+// Material-Ui Icons
+import AssignmentInd from '@material-ui/icons/AssignmentInd';
+import SendIcon from '@material-ui/icons/Send';
+
+// Views
+import ApplicantDialog from './AdminJobApplicant.jsx';
 
 const styles = theme => ({
   root: {
@@ -23,30 +28,33 @@ const styles = theme => ({
     overflowX: 'auto',
   },
   table: {
-    minWidth: 700,
+    minWidth: 400,
   },
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-
 class SimpleTable extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  // Applicant's CV Handler
+  handleClickOpenApplicant = () => {
+    this.setState({
+      open: true,
+    });
+  };
+  handleCloseApplicant = value => {
+    this.setState({ selectedValue: value, open: false });
+  };
+
+  // JOB Card Handler
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
-
   handleListItemClick = value => {
     this.props.onClose(value);
   };
@@ -54,11 +62,12 @@ class SimpleTable extends React.Component {
 
 
   render() {
+    const applicants = this.props.applicants? this.props.applicants:[]
 
     const { classes, onClose, selectedValue, ...other } = this.props;
     return (
       <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" {...other}>
-       <DialogTitle id="simple-dialog-title">Your Candidates</DialogTitle>
+       <DialogTitle id="simple-dialog-title">Your Geeks</DialogTitle>
 
         <Table className={classes.table}>
           <TableHead>
@@ -67,24 +76,23 @@ class SimpleTable extends React.Component {
               <TableCell align="center">Score</TableCell>
               <TableCell align="center">View CV</TableCell>
               <TableCell align="center">Interview Invite</TableCell>
-              <TableCell align="center">Protein (g)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.id}>
+            {applicants.map(applicant => (
+              <TableRow key={applicant.user.id}>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {applicant.user.email}
                 </TableCell>
                 <TableCell align="center">
-                  {row.carbs}
+                  {0}
                 </TableCell>
                 <TableCell align="center">
                   <IconButton
                     color="secondary"
                     className={classes.button}
                     aria-label="Add an alarm"
-                    href="/admin"
+                    onClick={this.handleClickOpenApplicant}
                   >
                     <AssignmentInd />
                   </IconButton>
@@ -97,9 +105,13 @@ class SimpleTable extends React.Component {
                     href="/admin"
                   >
                     <SendIcon />
+                    <ApplicantDialog
+                      open={this.state.open}
+                      onCloseApplicant={this.handleCloseApplicant}
+                      userid={applicant.user.id}
+                    />
                   </IconButton>
                 </TableCell>
-                <TableCell align="center">{row.protein}</TableCell>
               </TableRow>
             ))}
           </TableBody>
