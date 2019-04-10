@@ -97,8 +97,8 @@ usr7 = User.create(
 puts "Re-creating Profiles ..."
 
 pro1 = Profile.create(
-  :first_name => Faker::Name.first_name,
-  :last_name => Faker::Name.last_name,
+  :first_name => 'Weihan',
+  :last_name => 'Su',
   :phone_number =>  Faker::PhoneNumber.cell_phone,
   :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,
@@ -108,8 +108,8 @@ pro1 = Profile.create(
 )
 
 pro2 = Profile.create(
-  :first_name => Faker::Name.first_name,
-  :last_name => Faker::Name.last_name,
+  :first_name => 'Jay',
+  :last_name => 'Kim',
   :phone_number =>  Faker::PhoneNumber.cell_phone,
   :postal_code => postal_code.sample,
   :street_address => Faker::Address.street_address,

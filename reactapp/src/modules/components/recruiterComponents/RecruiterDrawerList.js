@@ -24,9 +24,9 @@ const categories = [
   {
     id: 'RECRUITER',
     children: [
-      { id: 'Post Job', icon: <PeopleIcon color="secondary"/> },
-      { id: 'Find Candidates', icon: <DnsRoundedIcon color="secondary"/> },
-      { id: 'Job Board', icon: <PermMediaOutlinedIcon color="secondary"/> }
+      { id: 'Post Job', icon: <PeopleIcon color="secondary"/>, href: '/recruiter/jobs' },
+      { id: 'Find Candidates', icon: <DnsRoundedIcon color="secondary"/>, href: '/recruiter'  },
+      { id: 'Job Board', icon: <PermMediaOutlinedIcon color="secondary"/>, href: '/recruiter'  }
     ],
   }
 ];
@@ -97,15 +97,17 @@ function DrawerList(props) {
                 {id}
               </ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
+            {children.map(({ id: childId, icon, href }) => (
               <ListItem
                 button
                 dense
+                component="a"
+                href={href}
                 key={childId}
                 className={classNames(
                   classes.item,
                   classes.itemActionable,
-                  active && classes.itemActiveItem,
+
                 )}
               >
                 <ListItemIcon>{icon}</ListItemIcon>
