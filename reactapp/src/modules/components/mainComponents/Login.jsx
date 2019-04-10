@@ -49,13 +49,13 @@ class Main extends Component {
           if (res.data.user_type === "candidate") {
           this.props.history.push(`/applicant/1`)
           } else {
-            this.props.history.push(`/recruiter/1`)
+            this.props.history.push(`/recruiter`)
           }
         },
         (err) => this.setState({ errors: "Wrong email or password" })
       )
     }
-    
+
   }
 
   onChange = (e) => {
@@ -81,7 +81,7 @@ class Main extends Component {
                 name="email"
               />
             </div>
-            
+
             <div>
             <TextField
               id="standard-password-input"
@@ -96,7 +96,7 @@ class Main extends Component {
             </div>
 
 
-            
+
           <Button variant="contained" component="span" className= {classes.button} disabled={isLoading} onClick={this.onClick}>
             Login
           </Button>
