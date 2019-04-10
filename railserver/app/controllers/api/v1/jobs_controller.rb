@@ -5,7 +5,17 @@ module Api::V1
     def index
       # @job = Job.find_by(:user_id => params[:user_id])
       @job = Job.all
-      @resume = @job.to_json({:include => [:job_educations, :skills, :company, :applicants]})
+      @resume = @job.to_json({
+        :include => [
+          :job_educations,
+          :skills, :company,
+          :applicants => {
+            :include => [
+              :user
+            ]
+          }
+        ]
+      })
 
       render json: @resume, status: :created
     end

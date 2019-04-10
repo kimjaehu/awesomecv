@@ -1,22 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import axios from 'axios';
+
 
 // Material-Ui Tags
 import { withStyles } from '@material-ui/core/styles';
-// import SwipeableViews from 'react-swipeable-views';
 
 // Material-Ui Icon
 
 // Views Pages
-import Users from './Users';
-import NavBar from './NavBarTeste';
+import NavBar from './RecruiterNavBar';
 import RecruiterDrawer from './RecruiterDrawer';
 import AdminJobFlow from '../components/recruiterComponents/AdminJobFlow';
 import AdminPostJob from '../components/recruiterComponents/AdminPostJob';
-// import DrawerList from '../components/recruiterComponents/DrawerList';
+
 
 const drawerWidth = 240;
 

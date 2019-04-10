@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       post '/auth/login', to: 'authentication#login'
       resources :users do
         resources :profiles
-        resources :jobs
-        resources :applicants
+        resources :jobs do
+          resources :applicants
+        end
       end
     end
   end

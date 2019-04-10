@@ -1,7 +1,7 @@
 module Api::V1
   class UsersController < ApplicationController
     # before_action :find_user, except: %i[update destroy show]
-    before_action :authorize_request, except: [:create]
+    # before_action :authorize_request, except: [:create]
 
     # GET    /api/v1/users
     def index
@@ -11,7 +11,16 @@ module Api::V1
 
     # GET    /api/v1/users/:id(.:format)
     def show
-      render json: @user, status: :ok
+      @user = User.find(params[:user_id])
+      @render = @user.to_json({
+        :include => [
+          :profile,
+          :educations,
+          :carrers,
+          :about_me
+        ]
+      })
+      render json: @render, status: :ok
     end
 
     # POST /api/v1/users(.:format)
