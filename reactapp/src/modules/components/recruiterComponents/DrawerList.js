@@ -27,14 +27,13 @@ const categories = [
   {
     id: 'Applicant',
     children: [
-      { id: 'Add a Resume', icon: <Book color="secondary"/>, },
-      { id: 'Find a Job', icon: <FindInPage color="secondary"/> },
+      { id: 'Resume and Find', href:'/applicant/2',  icon: <Book color="secondary"/>, }
     ],
   },
   {
     id: 'Logout',
     children: [
-      { id: 'Logout', icon: <Error color="secondary"/> },
+      { id: 'Logout', href:'/', icon: <Error color="secondary"/> },
     ],
   },
 ];
@@ -105,10 +104,12 @@ function Navigator(props) {
                 {id}
               </ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
+            {children.map(({ id: childId, icon, active, href }) => (
               <ListItem
                 button
                 dense
+                href={href}
+                component="a"
                 key={childId}
                 className={classNames(
                   classes.item,

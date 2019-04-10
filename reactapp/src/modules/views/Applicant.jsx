@@ -165,7 +165,7 @@ class Appplicant extends React.Component {
           <div className={classNames(classes.drawerHeader, classes.drawerSpace)}>
 
           <ListItem className={classNames(classes.item, classes.itemCategory)}>
-            <ListItemIcon>
+            {/* <ListItemIcon>
               <PersonIcon color="secondary"/>
             </ListItemIcon>
             <ListItemText
@@ -175,8 +175,8 @@ class Appplicant extends React.Component {
               }}
               fontWeight="fontWeightMedium"
             >
-              Username
-            </ListItemText>
+              Awe
+            </ListItemText> */}
           </ListItem>
 
           <IconButton onClick={this.handleDrawerClose}>
