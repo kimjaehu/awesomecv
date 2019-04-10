@@ -140,7 +140,7 @@ class Resume extends Component {
   }
   
   componentDidMount() {
-    axios.get('/api/v1/users/4/profiles')
+    axios.get('/api/v1/users/2/profiles')
     .then(res => {
       console.log('res',res)
       this.setState({ 
