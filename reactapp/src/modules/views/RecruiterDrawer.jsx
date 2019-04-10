@@ -12,6 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
 
 // Material-Ui Icon
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -26,6 +28,14 @@ import RecruiterDrawerList from '../components/recruiterComponents/RecruiterDraw
 const drawerWidth = 240;
 
 const styles = theme => ({
+  menuItem: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& $primary, & $icon': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -64,7 +74,7 @@ class RecruiterDrawer extends React.Component {
         }}
       >
         <div className={classNames(classes.drawerHeader, classes.drawerSpace)}>
-          <ListItem className={classNames(classes.item, classes.itemCategory)}>
+          <MenuItem className={classNames(classes.item, classes.itemCategory)}>
             <ListItemIcon>
               <PersonIcon color="secondary"/>
             </ListItemIcon>
@@ -74,9 +84,9 @@ class RecruiterDrawer extends React.Component {
                 textDense: classes.textDense,
               }}
             >
-              Username
+              Welcome
             </ListItemText>
-          </ListItem>
+          </MenuItem>
 
           <IconButton onClick={this.props.handleDrawerClose}>
           {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
