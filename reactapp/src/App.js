@@ -25,6 +25,7 @@ class App extends Component {
         <Route path="/recruiter/recruiter_id/post_job" exact component={RecruiterAppPostJob} />
         <Route path="/recruiter/recruiter_id/jobs" exact component={RecruiterAppJobs} />
         <Route path="/RecruiterApp" exact component={RecruiterApp} />
+        <Route path="/applicant/:id" exact component={Applicant} />
       </Router>
     );
   }

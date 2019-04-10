@@ -55,12 +55,13 @@ class Map extends Component {
     searchLocation:'',
     searchLatLng:{lat: 43.6532, lng: -79.3832},
     awesomeJobs:[
-      {lat: 43.6432, lng: -79.3832},
-      {lat: 43.6532, lng: -79.3832},
-      {lat: 43.6332, lng: -79.3832},
-      {lat: 43.6232, lng: -79.3832},
-      {lat: 43.6132, lng: -79.3832},
+      // {lat: 43.6432, lng: -79.3832},
+      // {lat: 43.6532, lng: -79.3832},
+      // {lat: 43.6332, lng: -79.3832},
+      // {lat: 43.6232, lng: -79.3832},
+      // {lat: 43.6132, lng: -79.3832},
     ],
+    latlng:''
   }
   
   componentDidMount() {
@@ -80,10 +81,10 @@ class Map extends Component {
     Geocode.fromAddress(this.state.searchLocation).then(
       response => {
         // const { lat, lng } = response.results[0].geometry.location;
-        console.log(response.results[0].geometry.location)
+        // console.log(response.results[0].geometry.location)
         map.setCenter(new window.google.maps.LatLng(response.results[0].geometry.location))
         this.setState({searchLatLng: response.results[0].geometry.location});
-        console.log('geocode after setstate',this.state.searchLatLng)
+        // console.log('geocode after setstate',this.state.searchLatLng)
         return this.state.searchLatLng
       },
       error => {
@@ -93,18 +94,21 @@ class Map extends Component {
     
   }
 
-  geocoder = (postal) => {
+  geocoder = async (postal) => {
     // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
     Geocode.setApiKey(GOOGLE_MAP_KEY);
     
     // Enable or disable logs. Its optional.
     Geocode.enableDebug();
 
-    Geocode.fromAddress(postal).then(
+    await Geocode.fromAddress(postal).then(
       response => {
+        
         console.log('postal code)',postal)
-        console.log('from geocoder',response.results[0].geometry.location);
-        return (response.results[0].geometry.location)
+        // console.log('from geocoder',response.results[0].geometry.location);
+        console.log('this is from geocode',response.results[0].geometry.location)
+        this.setState({latlng: response.results[0].geometry.location})
+        return response.results[0].geometry.location
       },
       error => {
         console.error('geocoder error',postal,error);
@@ -118,7 +122,7 @@ class Map extends Component {
   
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state)
+    // console.log(this.state)
   }
   
   onClick = (e) => {
@@ -145,7 +149,7 @@ class Map extends Component {
         this.setState({
           awesomeJobs: res.data
         }, this.renderMap())
-        console.log(res.data)
+        // console.log(res.data)
       })
       .catch(err => {
         console.log("Error " + err)
@@ -176,7 +180,7 @@ class Map extends Component {
     // }
 
 
-  initMap = () => {
+  initMap = async () => {
 
     //create a map
     map = new window.google.maps.Map(document.getElementById('map'), {
@@ -188,18 +192,37 @@ class Map extends Component {
     let infowindow = new window.google.maps.InfoWindow();
 
       // display markers
-      this.state.awesomeJobs.map(awesomeJob => {
-        console.log(awesomeJob.postal_code)
-      var contentString = `Job Title: ` //${job.title}
+      this.state.awesomeJobs.map( async (awesomeJob)  => {
+      var contentString =
+      `
+      <div> 
+        <h2> Job Title: ${awesomeJob.job_title} </h2> 
+      </div>
+      <div>
+        <h5> Job Description: </h5>
+      </div>
+      <div>
+        ${awesomeJob.job_description}
+      <div>
+      <div>
+        <h5> ${awesomeJob.company.company_name} </h5>
+      </div>
+      <div>
+        <h5> Level: ${awesomeJob.job_level} </h5>
+      </div>
+      <button type="button" class="btn btn-primary">Apply Now</button>
+      
+      ` //${job.title}
       // create a marker
-
+      let location = await this.geocoder(awesomeJob.postal_code)
+      console.log('location', await this.geocoder(awesomeJob.postal_code))
       let marker = new window.google.maps.Marker({
         // position: this.geocoder(awesomeJob.postal_code),
-        position: this.geocoder(awesomeJob.postal_code),
+        position: this.state.latlng,
         map: map,
         // title: job.title
       })
-      
+
       //click on a marker
       marker.addListener('click', function() {
 
@@ -209,8 +232,8 @@ class Map extends Component {
         //open an infowindow
         infowindow.open(map, marker);
       });
-      setTimeout(2000)
     });
+  
   }
 
 
