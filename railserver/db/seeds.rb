@@ -252,6 +252,7 @@ carr1 = pro1.carrers.create!({
 carr2 = pro2.carrers.create!({
   job_category:  'IT',
   job_title: job_title.sample,
+  seniority: "Senior",
   month_experience: Faker::Number.between(1, 100),
   description: Faker::Hipster.paragraph(3),
   user: usr2
@@ -311,7 +312,7 @@ AboutMe.create(
 )
 
 AboutMe.create(
-  :description => "Detail oriented professional with experience in SERVER MANUFACTURING, COMPUTER HARDWARE TROUBLESHOOTING and MANAGEMENT. Seeking to take the next career step with respected organization dedicated to world class quality.",
+  :description => "Detail oriented professional with experience in IT and MANAGEMENT. Seeking to take the next career step with respected organization dedicated to world class quality.",
   :profile => pro2,
   :user => usr2
 )
