@@ -21,6 +21,19 @@ import SendIcon from '@material-ui/icons/Send';
 // Views
 import ApplicantDialog from './AdminJobApplicant.jsx';
 
+
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+
+
+
+
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -38,8 +51,26 @@ class SimpleTable extends React.Component {
     super(props);
     this.state = {
       open: false,
+      openInvite: false,
     };
   }
+
+
+
+
+  handleClickOpenInvite = () => {
+    this.setState({ openInvite: true });
+  };
+
+  handleCloseInvite = () => {
+    this.setState({ openInvite: false });
+  };
+
+
+
+
+
+
 
   // Applicant's CV Handler
   handleClickOpenApplicant = () => {
@@ -78,7 +109,7 @@ class SimpleTable extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell>Candidate</TableCell>
-              <TableCell align="center">Score</TableCell>
+
               <TableCell align="center">View CV</TableCell>
               <TableCell align="center">Interview Invite</TableCell>
             </TableRow>
@@ -89,9 +120,7 @@ class SimpleTable extends React.Component {
                 <TableCell component="th" scope="row">
                   {applicant.user.email}
                 </TableCell>
-                <TableCell align="center">
-                  {0}
-                </TableCell>
+
                 <TableCell align="center">
                   <IconButton
                     color="secondary"
@@ -100,21 +129,70 @@ class SimpleTable extends React.Component {
                     onClick={this.handleClickOpenApplicant}
                   >
                     <AssignmentInd />
+                    <ApplicantDialog
+                      open={this.state.open}
+                      onCloseApplicant={this.handleCloseApplicant}
+                      userid={applicant.user.id}
+                    />
                   </IconButton>
+
                 </TableCell>
                 <TableCell align="center">
                   <IconButton
                     color="secondary"
                     className={classes.button}
                     aria-label="Add an alarm"
-                    href="/admin"
+                    onClick={this.handleClickOpenInvite}
+
                   >
                     <SendIcon />
-                    <ApplicantDialog
-                      open={this.state.open}
-                      onCloseApplicant={this.handleCloseApplicant}
-                      userid={applicant.user.id}
-                    />
+
+
+
+
+
+
+
+
+        <Dialog
+          open={this.state.openInvite}
+          onClose={this.handleCloseInvite}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Send Interview Invitation</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To send interview invitation, please enter your message here.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Message"
+              type="text"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseInvite} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleCloseInvite} color="primary">
+              Send
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+
+
+
+
+
+
+
+
+
+
                   </IconButton>
                 </TableCell>
               </TableRow>
