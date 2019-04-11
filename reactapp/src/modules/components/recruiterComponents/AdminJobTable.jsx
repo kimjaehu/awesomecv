@@ -66,7 +66,12 @@ class SimpleTable extends React.Component {
 
     const { classes, onClose, selectedValue, ...other } = this.props;
     return (
-      <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" {...other}>
+      <Dialog
+        maxWidth="md"
+        onClose={this.handleClose}
+        aria-labelledby="simple-dialog-title"
+        {...other}
+      >
        <DialogTitle id="simple-dialog-title">Your Geeks</DialogTitle>
 
         <Table className={classes.table}>

@@ -32,7 +32,7 @@ const styles = theme => ({
 });
 // // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
 // Geocode.setApiKey(GOOGLE_MAP_KEY);
- 
+
 // // Enable or disable logs. Its optional.
 // Geocode.enableDebug();
 
@@ -62,21 +62,21 @@ class Map extends Component {
     ],
     latlng:''
   }
-  
+
   componentDidMount() {
     this.getAwesomeJobs()
     // this.getIndeedJobs()
-    
+
     this.renderMap() // <- remove after information from server
   }
 
   initGeocode = () => {
 
     Geocode.setApiKey(GOOGLE_MAP_KEY);
-  
+
     // Enable or disable logs. Its optional.
     Geocode.enableDebug();
-    
+
     Geocode.fromAddress(this.state.searchLocation).then(
       response => {
         // const { lat, lng } = response.results[0].geometry.location;
@@ -90,19 +90,19 @@ class Map extends Component {
         console.error(error);
       }
     );
-    
+
   }
 
   geocoder = async (postal) => {
     // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
     Geocode.setApiKey(GOOGLE_MAP_KEY);
-    
+
     // Enable or disable logs. Its optional.
     Geocode.enableDebug();
 
     await Geocode.fromAddress(postal).then(
       response => {
-        
+
         console.log('postal code)',postal)
         // console.log('from geocoder',response.results[0].geometry.location);
         console.log('this is from geocode',response.results[0].geometry.location)
@@ -118,18 +118,18 @@ class Map extends Component {
     loadScript(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_KEY}&callback=initMap`)
     window.initMap = this.initMap
   }
-  
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     // console.log(this.state)
   }
-  
+
   onClick = (e) => {
     // this.setState(geocode(this.state.searchLocation), () => {
     //   console.log('geocode done', this.state.searchLatLng)
     //   this.newCenter(this.state.searchLatLng)
     // })
-    // this.setState(geocode(this.state.searchLatLng))  
+    // this.setState(geocode(this.state.searchLatLng))
     this.initGeocode()
     // this.newCenter()
   };
@@ -178,9 +178,9 @@ class Map extends Component {
     //     })
     // }
 
-  apply = () => {
-     axios.post('/api/v1/users/2/jobs/1/applicants')
-  }
+  // apply = () => {
+  //    axios.post('/api/v1/users/2/jobs/1/applicants')
+  // }
 
   initMap = async () => {
 
@@ -189,8 +189,8 @@ class Map extends Component {
       center: this.state.searchLatLng,
       zoom: 14
     });
-    
-    // create an infowindow 
+
+    // create an infowindow
     let infowindow = new window.google.maps.InfoWindow();
 
       // display markers
@@ -200,8 +200,8 @@ class Map extends Component {
       <div class="infobox-wrapper>
         <div class="infowindowbox>
 
-        <div> 
-          <h2> Job Title: ${awesomeJob.job_title} </h2> 
+        <div>
+          <h2> Job Title: ${awesomeJob.job_title} </h2>
         </div>
         <div>
           <h5> Job Description: </h5>
@@ -216,15 +216,15 @@ class Map extends Component {
           <h5> Level: ${awesomeJob.job_level} </h5>
         </div>
           <span>
-            <a class="btn btn-primary" href="/applicant/1" onClick=${this.apply()}>Apply Now</a>
+            <a class="btn btn-primary" href="/applicant/1" >Apply Now</a>
 
           </span>
-          
+
         </div>
       </div>
 
       ` //${job.title}
-      
+
       // create a marker
       let location = await this.geocoder(awesomeJob.postal_code)
       console.log('location', await this.geocoder(awesomeJob.postal_code))
@@ -245,7 +245,7 @@ class Map extends Component {
         infowindow.open(map, marker);
       });
     });
-  
+
   }
 
 
@@ -254,7 +254,7 @@ class Map extends Component {
     const { classes } = this.props;
     return (
       <main>
-        <div> 
+        <div>
           <form className={classes.container} noValidate autoComplete="off">
             <TextField
               id="standard-searchLocation-input"

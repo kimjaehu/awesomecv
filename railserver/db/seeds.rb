@@ -25,7 +25,14 @@ job_title = [FrontEndDeveloper = "Front End Developer", BackEndDeveloper = "Back
 job_level = [dog="Junior", cat="Senior", turtle="Manager"]
 skill = [label1="C#",label2="Elixir",label3="Go",label4="Java",label5="JavaScript",label6="PHP",label7="Python",label8="Ruby",label9="Rust",label10="Swift",label11="TypeScript",label13="Angular",label14="Django",label15="Express",label16="Node",label17="Rails",label18="React",label19="Vue"]
 postal_code = [dog="M3H 6A7", cat="M4C 1X5", turtle="M4E 0A7", A1="M4C 1R3", A2="M4C 3J6", A3="M4C 3X1", A4="M4C 4L4"]
-
+job_desc = [
+  one = "We are looking for an awesome back-end software developer who will be a key part of the Honeybee development team. You will be working closely with our VP of Technology Innovation, who leads the software development team, and will have tremendous influence over the direction, architecture, and development of the product.",
+  two = "As a senior resource on the team, you will be relied upon to produce excellent quality code and design scalable / sustainable architect for our back-end stack.",
+  three = "We’re looking for a Front End Developer to join our growing production team. You’re a proactive problem solver who enjoys contributing your code on a variety of challenging projects.",
+  four = "We're hiring to work with our team on the front-end of our stack. The main languages we use are Clojure, ClojureScript, and Go. While experience with those languages are great, we're also looking for candidates who have an interest in learning them.",
+  five = "We are looking for someone who has 3-5 years of experiences in a broad range of technologies, including back-end, cloud infrastructure, and web front-end",
+  six = "Software Engineers document this process through the use of diagrams and flowcharts, developing computer instructions through the use of algorithms. Given the breadth of the role, a Software Engineer must have a thorough understanding of computer systems."
+]
 # Let's do this ...
 
 puts "Destroy Tables ..."
@@ -196,7 +203,7 @@ edu2 = pro1.educations.create!({
   start_date: Faker::Date.backward(14),
   end_date: Faker::Date.backward(14),
   notes: Faker::GreekPhilosophers.quote,
-  user: usr1
+  user: usr2
 })
 
 edu3 = pro1.educations.create!({
@@ -205,7 +212,7 @@ edu3 = pro1.educations.create!({
   start_date: Faker::Date.backward(14),
   end_date: Faker::Date.backward(14),
   notes: Faker::GreekPhilosophers.quote,
-  user: usr1
+  user: usr3
 })
 
 edu4 = pro2.educations.create!({
@@ -214,7 +221,7 @@ edu4 = pro2.educations.create!({
   start_date: Faker::Date.backward(14),
   end_date: Faker::Date.backward(14),
   notes: Faker::GreekPhilosophers.quote,
-  user: usr2
+  user: usr4
 })
 
 edu5 = pro2.educations.create!({
@@ -223,134 +230,10 @@ edu5 = pro2.educations.create!({
   start_date: Faker::Date.backward(14),
   end_date: Faker::Date.backward(14),
   notes: Faker::GreekPhilosophers.quote,
-  user: usr2
-})
-
-edu6 = pro2.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr2
-})
-
-edu7 = pro2.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr2
-})
-
-edu8 = pro3.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr3
-})
-
-edu9 = pro3.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr3
-})
-
-edu10 = pro3.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr3
-})
-
-edu11 = pro4.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr4
-})
-
-edu12 = pro4.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr4
-})
-
-edu13 = pro4.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr4
-})
-
-edu14 = pro4.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr4
-})
-
-edu15 = pro5.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
   user: usr5
 })
 
-edu16 = pro5.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr5
-})
 
-edu17 = pro5.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr5
-})
-
-edu18 = pro5.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr6
-})
-
-edu19 = pro5.educations.create!({
-  school_name: Faker::Educator.university,
-  degree: Faker::Educator.degree,
-  start_date: Faker::Date.backward(14),
-  end_date: Faker::Date.backward(14),
-  notes: Faker::GreekPhilosophers.quote,
-  user: usr7
-})
 
 
 ## CARRER
@@ -428,7 +311,7 @@ AboutMe.create(
 )
 
 AboutMe.create(
-  :description => Faker::Hipster.paragraph(3),
+  :description => "Detail oriented professional with experience in SERVER MANUFACTURING, COMPUTER HARDWARE TROUBLESHOOTING and MANAGEMENT. Seeking to take the next career step with respected organization dedicated to world class quality.",
   :profile => pro2,
   :user => usr2
 )
@@ -473,7 +356,7 @@ job1 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr1
 )
@@ -482,7 +365,7 @@ job11 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr1
 )
@@ -491,7 +374,7 @@ job12 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr1
 )
@@ -500,7 +383,7 @@ job13 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr1
 )
@@ -509,7 +392,7 @@ job2 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr2
 )
@@ -518,7 +401,7 @@ job3 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr3
 )
@@ -527,7 +410,7 @@ job4 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr4
 )
@@ -536,7 +419,7 @@ job5 = Job.create(
   :job_category => "IT",
   :job_title => job_title.sample,
   :job_level =>  job_level.sample,
-  :job_description => Faker::Hipster.paragraph(3),
+  :job_description => job_desc.sample,
   :postal_code => postal_code.sample,
   :user => usr5
 )
@@ -963,7 +846,7 @@ puts "Re-creating Applicant ..."
 Applicant.create(
   :status => "applied",
   :job => job1,
-  :user => usr5
+  :user => usr2
 )
 
 Applicant.create(
