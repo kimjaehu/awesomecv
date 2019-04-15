@@ -50,26 +50,6 @@ Some basic commands are:
 - [ ] Direct applicants to specific job page
 - [ ] Send resume to employer
 
-## Screenshots
-
-### Register/Login
-
-!["Register"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
-
-!["login"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
-
-### Applicant
-
-!["Resume"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
-
-!["Job Location Map"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
-
-### Employer/Recruiter
-
-!["Post Job"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
-
-!["Job Board"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
-
 ### Dependencies
 
 * node
