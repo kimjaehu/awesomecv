@@ -54,21 +54,21 @@ Some basic commands are:
 
 ### Register/Login
 
-!["Register"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
+!["Register"](https://github.com/kimjaehu/awesomecv/blob/master/reactapp/public/pics/register.png?raw=true)
 
-!["login"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
+!["login"](https://github.com/kimjaehu/awesomecv/blob/master/reactapp/public/pics/login.png?raw=true)
 
 ### Applicant
 
-!["Resume"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
+!["Resume"](https://github.com/kimjaehu/awesomecv/blob/master/reactapp/public/pics/resume.png?raw=true)
 
-!["Job Location Map"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
+!["Job Location Map"](https://github.com/kimjaehu/awesomecv/blob/master/reactapp/public/pics/applicant_map.png?raw=true)
 
 ### Employer/Recruiter
 
-!["Post Job"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
+!["Post Job"](https://github.com/kimjaehu/awesomecv/blob/master/reactapp/public/pics/post_job.png?raw=true)
 
-!["Job Board"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
+!["Job Board"](https://github.com/kimjaehu/awesomecv/blob/master/reactapp/public/pics/job_board.png?raw=true)
 
 ### Dependencies
 
