@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Geocode from "react-geocode";
 import axios from 'axios';
-
+import Resume from './Resume'
 const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
 let map
 
@@ -195,35 +195,36 @@ class Map extends Component {
 
       // display markers
       this.state.awesomeJobs.map( async (awesomeJob)  => {
-      var contentString =
-      `
-      <div class="infobox-wrapper>
-        <div class="infowindowbox>
+      var contentString = <Resume />
+      // `
+      // <div class="infobox-wrapper>
+      //   <div class="infowindowbox>
 
-        <div>
-          <h2> Job Title: ${awesomeJob.job_title} </h2>
-        </div>
-        <div>
-          <h5> Job Description: </h5>
-        </div>
-        <div>
-          ${awesomeJob.job_description}
-        <div>
-        <div>
-          <h5> ${awesomeJob.company.company_name} </h5>
-        </div>
-        <div>
-          <h5> Level: ${awesomeJob.job_level} </h5>
-        </div>
-          <span>
-            <a class="btn btn-primary" href="/applicant/1" >Apply Now</a>
+      //   <div>
+      //     <h2> Job Title: ${awesomeJob.job_title} </h2>
+      //   </div>
+      //   <div>
+      //     <h5> Job Description: </h5>
+      //   </div>
+      //   <div>
+      //     ${awesomeJob.job_description}
+      //   <div>
+      //   <div>
+      //     <h5> ${awesomeJob.company.company_name} </h5>
+      //   </div>
+      //   <div>
+      //     <h5> Level: ${awesomeJob.job_level} </h5>
+      //   </div>
+      //     <span>
+      //       <a class="btn btn-primary" href="/applicant/1" >Apply Now</a>
 
-          </span>
+            
+      //     </span>
 
-        </div>
-      </div>
+      //   </div>
+      // </div>
 
-      ` //${job.title}
+      // ` //${job.title}
 
       // create a marker
       let location = await this.geocoder(awesomeJob.postal_code)

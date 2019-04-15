@@ -1,68 +1,94 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AwesomeCV
 
-## Available Scripts
+AwesomeCV is an app that enables job seekers to search jobs in specific location and potential employers search applicants in specific location. This app uses React for front-end and Rails for back-end as well as Google maps and geocode API to render locaiton informations.
 
-In the project directory, you can run:
+## Getting started
 
-### `npm start`
+To get started, please follow below:
+1. Fork this repository, then clone your fork of this repository.
+2. In /railserver folder, install dependencies using the 'bundle install' command.
+3. Start the rails server using the 'bin/rails s -b 0.0.0.0' command (PORT:3000)
+4. In your browser connect to <http://localhost:3000/>
+5. In /reactapp folder, install dependencies using the `npm install` command.
+6. Start the react server using the `npm start` command (PORT:3006).
+7. In your browser connect to <http://localhost:3006/>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Some basic commands are:
+```
+[railserver] bundle install
+[railserver] bin/rails s -b 0.0.0.0
+[reactapp] npm install
+[reactapp] npm start
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Applicant: How to find job
 
-### `npm test`
+1. Register using email and password; indicate that you are applicant by clicking applicant radio button
+2. Login using email and password
+3. Input information on resume and click save button to save resume on database
+4. Click find a job button to go to the app and find a job that is close by
+5. Click the pin to view more information
+6. click Apply Now button to apply
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Employer/Recruiter: How to find candidate
+1. Register using email and password; indicate that you are applicant by clicking applicant radio button
+2. Login using email and password
+3. Click post a job and input job details
+4. Click Job Board to find the list of jobs that are created
+5. Click SHOW ME THE GEEKS to find all the applicants that are applied
 
-### `npm run build`
+## Functions
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Registration of users
+- [x] Login/authentication of users (send token) redirect to correct part of the app
+- [x] Load and save resume information
+- [x] Render job location to the map
+- [x] Show the list of jobs
+- [x] Show resume of the applicant
+- [ ] Render candidate location to the map (Find Candidates)
+- [ ] Send confirmation when resume is received
+- [ ] Direct applicants to specific job page
+- [ ] Send resume to employer
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Register/Login
 
-### `npm run eject`
+!["Register"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+!["login"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Applicant
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+!["Resume"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+!["Job Location Map"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
 
-## Learn More
+### Employer/Recruiter
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+!["Post Job"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+!["Job Board"](https://raw.githubusercontent.com/kimjaehu/chattyapp/master/docs/initial.png)
 
-### Code Splitting
+### Dependencies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* node
+* babel-core
+* babel-loader
+* babel-preset-es2015
+* babel-preset-react
+* material-ui
+* react
+* react-dom
+* react-redux
+* rails
+* axios
+* react-geocode
+* PostgreSQL
+* bcrypt
+* jwt
+* faker
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Created by
+- Jay
+- Weihan
